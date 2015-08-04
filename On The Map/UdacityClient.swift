@@ -14,16 +14,60 @@ class UdacityClient: NSObject {
     var session: NSURLSession
     
     /* Authentication state */
-    var sessionID : String? = nil
-    var userID : Int? = nil
+    static var sessionID : String? = nil
+    static var userID : Int? = nil
     
     override init() {
         session = NSURLSession.sharedSession()
         super.init()
     }
     
-    
-    
+    class func doLogin(userName: String!, password: String?, completionHandler: (result: AnyObject!, error: NSError?) -> Void) {
+        /* 1. Set the parameters */
+        
+        /* 2/3. Build the URL and configure the request */
+        let url = NSURL(string: UdacityClient.Constants.AuthorizationURL)!
+        let request = NSMutableURLRequest(URL: url)
+        var jsonifyError: NSError? = nil
+        request.HTTPMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        let jsonBody: [String:AnyObject] = ["udacity":
+            [
+                "username": userName,
+                "password": password
+                ] as AnyObject
+        ]
+        request.HTTPBody = NSJSONSerialization.dataWithJSONObject(jsonBody, options: nil, error: &jsonifyError)
+        let session = NSURLSession.sharedSession()
+        
+        /* 4. Build the request */
+        let task = session.dataTaskWithRequest(request) {data, response, downloadError in
+            
+            /* 5/6. Parse the data and use the data (happens in completion handler) */
+            if let error = downloadError {
+                let newError = UdacityClient.errorForData(data, response: response, error: error)
+                completionHandler(result: nil, error: downloadError)
+            } else {
+                let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5)) /* subset response data! */
+                UdacityClient.parseJSONWithCompletionHandler(newData) { result, error in
+                    
+                    if let sessionDict = result.valueForKey("session") as? [String:AnyObject] {
+                        self.sessionID = (sessionDict["id"] as? String)!
+                        println("session = \(self.sessionID)")
+                    }
+                    if let accountDict = result.valueForKey("account") as? [String:AnyObject] {
+                        self.userID = (accountDict["key"] as? String)!.toInt()
+                        println("user = \(self.userID)")
+                    }
+                    completionHandler(result: result, error: nil)
+                }
+                
+            }
+        }
+        /* 7. Start the request */
+        task.resume()
+    }
     
     
     // MARK: - Helpers
@@ -46,7 +90,7 @@ class UdacityClient: NSObject {
                 
                 let userInfo = [NSLocalizedDescriptionKey : errorMessage]
                 
-                return NSError(domain: "TMDB Error", code: 1, userInfo: userInfo)
+                return NSError(domain: "Udacity Error", code: 1, userInfo: userInfo)
             }
         }
         

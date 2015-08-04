@@ -12,7 +12,6 @@
 		374B612C1B6EA61D00A40985 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 374B612A1B6EA61D00A40985 /* Main.storyboard */; };
 		374B612E1B6EA61D00A40985 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 374B612D1B6EA61D00A40985 /* Images.xcassets */; };
 		374B61311B6EA61D00A40985 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 374B612F1B6EA61D00A40985 /* LaunchScreen.xib */; };
-		374B613D1B6EA61D00A40985 /* On_The_MapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374B613C1B6EA61D00A40985 /* On_The_MapTests.swift */; };
 		374B61621B6EAC4900A40985 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 374B61501B6EAC4900A40985 /* Roboto-Medium.ttf */; };
 		374B61631B6EAC4900A40985 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 374B61511B6EAC4900A40985 /* Roboto-Regular.ttf */; };
 		374B61641B6EAC4900A40985 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 374B61521B6EAC4900A40985 /* Roboto-Thin.ttf */; };
@@ -32,10 +31,13 @@
 		374B61721B6EAC4900A40985 /* udacity.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 374B61611B6EAC4900A40985 /* udacity.pdf */; };
 		377F40B81B70D32A000B8A38 /* UdacityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377F40B71B70D32A000B8A38 /* UdacityConstants.swift */; };
 		377F40BA1B70D398000B8A38 /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377F40B91B70D398000B8A38 /* UdacityClient.swift */; };
+		37EF16211B713FDD0088F6FC /* On_The_Map_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EF16201B713FDD0088F6FC /* On_The_Map_Tests.swift */; };
+		37EF162F1B7142CC0088F6FC /* UdacityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377F40B71B70D32A000B8A38 /* UdacityConstants.swift */; };
+		37EF16301B7142CC0088F6FC /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377F40B91B70D398000B8A38 /* UdacityClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		374B61371B6EA61D00A40985 /* PBXContainerItemProxy */ = {
+		37EF162D1B7142C20088F6FC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 374B61191B6EA61D00A40985 /* Project object */;
 			proxyType = 1;
@@ -52,9 +54,6 @@
 		374B612B1B6EA61D00A40985 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		374B612D1B6EA61D00A40985 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		374B61301B6EA61D00A40985 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		374B61361B6EA61D00A40985 /* On The MapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "On The MapTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		374B613B1B6EA61D00A40985 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		374B613C1B6EA61D00A40985 /* On_The_MapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = On_The_MapTests.swift; sourceTree = "<group>"; };
 		374B61501B6EAC4900A40985 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		374B61511B6EAC4900A40985 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		374B61521B6EAC4900A40985 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
@@ -74,6 +73,9 @@
 		374B61611B6EAC4900A40985 /* udacity.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = udacity.pdf; sourceTree = "<group>"; };
 		377F40B71B70D32A000B8A38 /* UdacityConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityConstants.swift; sourceTree = "<group>"; };
 		377F40B91B70D398000B8A38 /* UdacityClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
+		37EF161C1B713FDD0088F6FC /* On The Map Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "On The Map Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		37EF161F1B713FDD0088F6FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		37EF16201B713FDD0088F6FC /* On_The_Map_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = On_The_Map_Tests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +86,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		374B61331B6EA61D00A40985 /* Frameworks */ = {
+		37EF16191B713FDD0088F6FC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -98,7 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				374B61231B6EA61D00A40985 /* On The Map */,
-				374B61391B6EA61D00A40985 /* On The MapTests */,
+				37EF161D1B713FDD0088F6FC /* On The Map Tests */,
 				374B61221B6EA61D00A40985 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -107,7 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				374B61211B6EA61D00A40985 /* On The Map.app */,
-				374B61361B6EA61D00A40985 /* On The MapTests.xctest */,
+				37EF161C1B713FDD0088F6FC /* On The Map Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -130,23 +132,6 @@
 				374B61531B6EAC4900A40985 /* images */,
 				374B612D1B6EA61D00A40985 /* Images.xcassets */,
 				374B61251B6EA61D00A40985 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		374B61391B6EA61D00A40985 /* On The MapTests */ = {
-			isa = PBXGroup;
-			children = (
-				374B613C1B6EA61D00A40985 /* On_The_MapTests.swift */,
-				374B613A1B6EA61D00A40985 /* Supporting Files */,
-			);
-			path = "On The MapTests";
-			sourceTree = "<group>";
-		};
-		374B613A1B6EA61D00A40985 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				374B613B1B6EA61D00A40985 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -234,6 +219,23 @@
 			name = Parse;
 			sourceTree = "<group>";
 		};
+		37EF161D1B713FDD0088F6FC /* On The Map Tests */ = {
+			isa = PBXGroup;
+			children = (
+				37EF16201B713FDD0088F6FC /* On_The_Map_Tests.swift */,
+				37EF161E1B713FDD0088F6FC /* Supporting Files */,
+			);
+			path = "On The Map Tests";
+			sourceTree = "<group>";
+		};
+		37EF161E1B713FDD0088F6FC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				37EF161F1B713FDD0088F6FC /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -254,22 +256,22 @@
 			productReference = 374B61211B6EA61D00A40985 /* On The Map.app */;
 			productType = "com.apple.product-type.application";
 		};
-		374B61351B6EA61D00A40985 /* On The MapTests */ = {
+		37EF161B1B713FDD0088F6FC /* On The Map Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 374B61431B6EA61D00A40985 /* Build configuration list for PBXNativeTarget "On The MapTests" */;
+			buildConfigurationList = 37EF16241B713FDD0088F6FC /* Build configuration list for PBXNativeTarget "On The Map Tests" */;
 			buildPhases = (
-				374B61321B6EA61D00A40985 /* Sources */,
-				374B61331B6EA61D00A40985 /* Frameworks */,
-				374B61341B6EA61D00A40985 /* Resources */,
+				37EF16181B713FDD0088F6FC /* Sources */,
+				37EF16191B713FDD0088F6FC /* Frameworks */,
+				37EF161A1B713FDD0088F6FC /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				374B61381B6EA61D00A40985 /* PBXTargetDependency */,
+				37EF162E1B7142C20088F6FC /* PBXTargetDependency */,
 			);
-			name = "On The MapTests";
-			productName = "On The MapTests";
-			productReference = 374B61361B6EA61D00A40985 /* On The MapTests.xctest */;
+			name = "On The Map Tests";
+			productName = "On The Map Tests";
+			productReference = 37EF161C1B713FDD0088F6FC /* On The Map Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -284,7 +286,7 @@
 					374B61201B6EA61D00A40985 = {
 						CreatedOnToolsVersion = 6.4;
 					};
-					374B61351B6EA61D00A40985 = {
+					37EF161B1B713FDD0088F6FC = {
 						CreatedOnToolsVersion = 6.4;
 						TestTargetID = 374B61201B6EA61D00A40985;
 					};
@@ -304,7 +306,7 @@
 			projectRoot = "";
 			targets = (
 				374B61201B6EA61D00A40985 /* On The Map */,
-				374B61351B6EA61D00A40985 /* On The MapTests */,
+				37EF161B1B713FDD0088F6FC /* On The Map Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -337,7 +339,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		374B61341B6EA61D00A40985 /* Resources */ = {
+		37EF161A1B713FDD0088F6FC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -358,21 +360,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		374B61321B6EA61D00A40985 /* Sources */ = {
+		37EF16181B713FDD0088F6FC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				374B613D1B6EA61D00A40985 /* On_The_MapTests.swift in Sources */,
+				37EF162F1B7142CC0088F6FC /* UdacityConstants.swift in Sources */,
+				37EF16301B7142CC0088F6FC /* UdacityClient.swift in Sources */,
+				37EF16211B713FDD0088F6FC /* On_The_Map_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		374B61381B6EA61D00A40985 /* PBXTargetDependency */ = {
+		37EF162E1B7142C20088F6FC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 374B61201B6EA61D00A40985 /* On The Map */;
-			targetProxy = 374B61371B6EA61D00A40985 /* PBXContainerItemProxy */;
+			targetProxy = 37EF162D1B7142C20088F6FC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -497,10 +501,13 @@
 			};
 			name = Release;
 		};
-		374B61441B6EA61D00A40985 /* Debug */ = {
+		37EF16251B713FDD0088F6FC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Greg Palen (G35HZLB548)";
+				DEAD_CODE_STRIPPING = NO;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -509,24 +516,33 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "On The MapTests/Info.plist";
+				GENERATE_PKGINFO_FILE = NO;
+				INFOPLIST_FILE = "On The Map Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
+				"SWIFT_INCLUDE_PATHS[arch=*]" = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/On The Map.app/On The Map";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Debug;
 		};
-		374B61451B6EA61D00A40985 /* Release */ = {
+		37EF16261B713FDD0088F6FC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Greg Palen (G35HZLB548)";
+				DEAD_CODE_STRIPPING = NO;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "On The MapTests/Info.plist";
+				GENERATE_PKGINFO_FILE = NO;
+				INFOPLIST_FILE = "On The Map Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/On The Map.app/On The Map";
 			};
 			name = Release;
@@ -552,14 +568,13 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		374B61431B6EA61D00A40985 /* Build configuration list for PBXNativeTarget "On The MapTests" */ = {
+		37EF16241B713FDD0088F6FC /* Build configuration list for PBXNativeTarget "On The Map Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				374B61441B6EA61D00A40985 /* Debug */,
-				374B61451B6EA61D00A40985 /* Release */,
+				37EF16251B713FDD0088F6FC /* Debug */,
+				37EF16261B713FDD0088F6FC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

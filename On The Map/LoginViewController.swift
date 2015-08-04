@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  LoginViewController.swift
 //  On The Map
 //
 //  Created by Greg Palen on 8/2/15.
@@ -13,6 +13,8 @@ class LoginViewController: UIViewController, UIWebViewDelegate {
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var webView: UIWebView!
+    
+    var udacityClient: UdacityClient! = UdacityClient.sharedInstance()
     
     var urlRequest: NSURLRequest? = nil
     var requestToken: String? = nil
@@ -56,6 +58,21 @@ class LoginViewController: UIViewController, UIWebViewDelegate {
 
     @IBAction func doLogin() {
         println("email = \(email.text), pass = \(password.text)")
+        UdacityClient.doLogin(email.text, password: password.text) { (result, error) in
+            if result != nil {
+                println("there was a result")
+                
+                if let sessionDict = result.valueForKey("account") as? [String:AnyObject] {
+                    println(sessionDict["key"]!)
+
+                } else {
+                    println("Cant find key 'udacity' in \(result)")
+                }
+                
+            }
+            if error != nil {println("there was an error")}
+            println("done")
+            return
+        }
     }
 }
-

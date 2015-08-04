@@ -65,10 +65,10 @@ extension UdacityClient {
         
         // MARK: Authorization
         static let RequestToken = "request_token"
-        static let SessionID = "session_id"
+        static let SessionID = "id"
         
         // MARK: Account
-        static let UserID = "id"
+        static let UserID = "key"
         
        
     }
