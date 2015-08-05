@@ -30,7 +30,7 @@ class UdacityClient: NSObject {
         
         /* 4. Build the request */
         var task = ClientAPILibrary.taskForSecurePOSTMethod (Methods.Authorization, parameters: nil, jsonBody: jsonBody) {result, error in
-            if let jsonResult = result {
+            if let jsonResult = result as? NSDictionary {
                 if let sessionDict = result.valueForKey("session") as? [String:AnyObject] {
                     UdacityClient.sessionID = sessionDict[JSONResponseKeys.SessionID] as? String
                 }
