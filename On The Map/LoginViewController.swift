@@ -13,9 +13,7 @@ class LoginViewController: UIViewController, UIWebViewDelegate {
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var webView: UIWebView!
-    
-    var udacityClient: UdacityClient! = UdacityClient.sharedInstance()
-    
+        
     var urlRequest: NSURLRequest? = nil
     var requestToken: String? = nil
     var completionHandler : ((success: Bool, errorString: String?) -> Void)? = nil
@@ -43,13 +41,14 @@ class LoginViewController: UIViewController, UIWebViewDelegate {
     // MARK: - UIWebViewDelegate
     
     func webViewDidFinishLoad(webView: UIWebView) {
-        
+        /*
         if(webView.request!.URL!.absoluteString! == "\(UdacityClient.Constants.AuthorizationURL)\(requestToken!)/allow") {
             
             self.dismissViewControllerAnimated(true, completion: { () -> Void in
                 self.completionHandler!(success: true, errorString: nil)
             })
         }
+        */
     }
     
     func cancelAuth() {

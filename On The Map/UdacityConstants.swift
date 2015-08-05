@@ -15,27 +15,18 @@ extension UdacityClient {
         // MARK: URLs
         static let BaseURL : String = "http://www.udacity.com/api/"
         static let BaseURLSecure : String = "https://www.udacity.com/api/"
-        static let AuthorizationURL : String = "https://www.udacity.com/api/session"
         
     }
     
     // MARK: - Methods
     struct Methods {
         
-        // MARK: Account
-        static let Account = "account"
+        // MARK: Login
+        static let Authorization: String = "session"
         
-        // MARK: Authentication
-        static let AuthenticationTokenNew = "authentication/token/new"
-        static let AuthenticationSessionNew = "authentication/session/new"
+        // MARK: Session
+        static let SessionToken = "authentication/token/new"
 
-    }
-    
-    // MARK: - URL Keys
-    struct URLKeys {
-        
-        static let UserID = "id"
-        
     }
     
     // MARK: - Parameter Keys
@@ -49,8 +40,8 @@ extension UdacityClient {
     // MARK: - JSON Body Keys
     struct JSONBodyKeys {
         
-        static let MediaType = "media_type"
-        static let MediaID = "media_id"
+        static let UserName = "username"
+        static let Password = "password"
         static let Favorite = "favorite"
         static let Watchlist = "watchlist"
         
