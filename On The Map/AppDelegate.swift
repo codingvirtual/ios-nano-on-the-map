@@ -20,11 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         // Initialize Parse.
-        Parse.setApplicationId("APPLICATION ID",
-            clientKey: "CLIENT KEY")
+        Parse.setApplicationId("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr",
+            clientKey: "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY")
         
-        // [Optional] Track statistics around application opens.
-        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         return true
     }
 
