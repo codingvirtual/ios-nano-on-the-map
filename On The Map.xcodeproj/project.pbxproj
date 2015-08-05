@@ -53,6 +53,16 @@
 		3790634F1B72A51200EABF2C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3790634E1B72A51200EABF2C /* SystemConfiguration.framework */; };
 		379063511B72A51B00EABF2C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 379063501B72A51B00EABF2C /* libz.dylib */; };
 		379063531B72A52400EABF2C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 379063521B72A52400EABF2C /* libsqlite3.dylib */; };
+		379063541B72A68A00EABF2C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 379063401B72A4D400EABF2C /* AudioToolbox.framework */; };
+		379063551B72A69100EABF2C /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 379063421B72A4D900EABF2C /* CFNetwork.framework */; };
+		379063561B72A69600EABF2C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 379063441B72A4E000EABF2C /* CoreGraphics.framework */; };
+		379063571B72A69B00EABF2C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 379063461B72A4EA00EABF2C /* CoreLocation.framework */; };
+		379063581B72A69F00EABF2C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 379063481B72A4F600EABF2C /* QuartzCore.framework */; };
+		379063591B72A6A400EABF2C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3790634A1B72A50100EABF2C /* Security.framework */; };
+		3790635A1B72A6A900EABF2C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3790634C1B72A50800EABF2C /* StoreKit.framework */; };
+		3790635B1B72A6AF00EABF2C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3790634E1B72A51200EABF2C /* SystemConfiguration.framework */; };
+		3790635C1B72A6B500EABF2C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 379063501B72A51B00EABF2C /* libz.dylib */; };
+		3790635D1B72A6BB00EABF2C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 379063521B72A52400EABF2C /* libsqlite3.dylib */; };
 		37EF16211B713FDD0088F6FC /* On_The_Map_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EF16201B713FDD0088F6FC /* On_The_Map_Tests.swift */; };
 		37EF162F1B7142CC0088F6FC /* UdacityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377F40B71B70D32A000B8A38 /* UdacityConstants.swift */; };
 		37EF16301B7142CC0088F6FC /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377F40B91B70D398000B8A38 /* UdacityClient.swift */; };
@@ -147,6 +157,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3790635D1B72A6BB00EABF2C /* libsqlite3.dylib in Frameworks */,
+				3790635C1B72A6B500EABF2C /* libz.dylib in Frameworks */,
+				3790635B1B72A6AF00EABF2C /* SystemConfiguration.framework in Frameworks */,
+				3790635A1B72A6A900EABF2C /* StoreKit.framework in Frameworks */,
+				379063591B72A6A400EABF2C /* Security.framework in Frameworks */,
+				379063581B72A69F00EABF2C /* QuartzCore.framework in Frameworks */,
+				379063571B72A69B00EABF2C /* CoreLocation.framework in Frameworks */,
+				379063561B72A69600EABF2C /* CoreGraphics.framework in Frameworks */,
+				379063551B72A69100EABF2C /* CFNetwork.framework in Frameworks */,
+				379063541B72A68A00EABF2C /* AudioToolbox.framework in Frameworks */,
 				3790633F1B72A47F00EABF2C /* ParseUI.framework in Frameworks */,
 				379063371B72A47F00EABF2C /* Parse.framework in Frameworks */,
 				379063391B72A47F00EABF2C /* ParseCrashReporting.framework in Frameworks */,
