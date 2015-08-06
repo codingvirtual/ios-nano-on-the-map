@@ -25,15 +25,18 @@ extension UdacityClient {
         static let Authorization: String = "session"
         
         // MARK: Session
-        static let SessionToken = "authentication/token/new"
+        static let UserID: String = "key"
+        
+        // MARK: Public User Data
+        static let GetUserData: String = "users/{id}"
 
     }
     
     // MARK: - Parameter Keys
     struct ParameterKeys {
         
-        static let SessionID = "session_id"
-        static let RequestToken = "request_token"
+        static let SessionID = "id"
+        static let UserID = "key"
         
     }
     
@@ -42,6 +45,7 @@ extension UdacityClient {
         
         static let UserName = "username"
         static let Password = "password"
+        static let Key = "key"
         static let Favorite = "favorite"
         static let Watchlist = "watchlist"
         
@@ -54,13 +58,15 @@ extension UdacityClient {
         static let StatusMessage = "status_message"
         static let StatusCode = "status_code"
         
-        // MARK: Authorization
-        static let RequestToken = "request_token"
+        // MARK: Session
         static let SessionID = "id"
         
         // MARK: Account
         static let UserID = "key"
+
+        // MARK: Public User Data
+        static let FirstName = "first_name"
+        static let LastName = "last_name"
         
-       
     }
 }

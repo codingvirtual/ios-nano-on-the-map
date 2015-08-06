@@ -23,9 +23,7 @@ class ClientAPILibrary: NSObject {
     // MARK: - GET (Insecure)
     
     class func taskForInsecureGETMethod(method: String, parameters: [String : AnyObject]?, completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
-        /* 1. Set the parameters */
-        
-        /* 2/3. Build the URL and configure the request */
+        /* 1,2,3. Set the parameters, Build the URL and Configure the request */
         var urlString = ClientAPILibrary.BaseURLInsecure! + method
         if let mutableParameters = parameters {
             urlString = urlString.stringByAppendingString(ClientAPILibrary.escapedParameters(mutableParameters))
@@ -33,7 +31,7 @@ class ClientAPILibrary: NSObject {
         let url = NSURL(string: urlString)!
         let request = NSURLRequest(URL: url)
         
-        /* 4. Make the request */
+        /* 4. Build the request */
         let task = Session.dataTaskWithRequest(request) {data, response, downloadError in
             
             /* 5/6. Parse the data and use the data (happens in completion handler) */
@@ -53,24 +51,26 @@ class ClientAPILibrary: NSObject {
     
     class func taskForSecureGETMethod(method: String, parameters: [String : AnyObject]?, completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
-        /* 1. Set the parameters */
-        var urlString = ClientAPILibrary.BaseURLInsecure! + method
-        if let mutableParameters = parameters {
-            urlString = urlString.stringByAppendingString(ClientAPILibrary.escapedParameters(mutableParameters))
-        }
+        var expandedMethod = subtituteKeyInMethod(method, key: parameters!.keys.first!, value: (parameters!.values.first as? Int)!.description)
+        /* 1,2,3. Set the parameters, Build the URL and Configure the request */
+        var urlString = ClientAPILibrary.BaseURLInsecure! + expandedMethod!
+        /*
+            if let mutableParameters = parameters {
+                urlString = urlString.stringByAppendingString(ClientAPILibrary.escapedParameters(mutableParameters))
+            }
+        */
         
         let url = NSURL(string: urlString)!
         let request = NSURLRequest(URL: url)
         
-        /* 4. Make the request */
+        /* 4. Build the request */
         let task = Session.dataTaskWithRequest(request) {data, response, downloadError in
-            
             /* 5/6. Parse the data and use the data (happens in completion handler) */
             if let error = downloadError {
                 let newError = ClientAPILibrary.errorForData(data, response: response, error: error)
                 completionHandler(result: nil, error: downloadError)
             } else {
-                let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5)) /* subset response data! */
+                let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5 )) /* subset response data! */
                 ClientAPILibrary.parseJSONWithCompletionHandler(newData, completionHandler: completionHandler)
             }
         }
@@ -82,7 +82,7 @@ class ClientAPILibrary: NSObject {
     
     class func taskForInsecurePOSTMethod(method: String, parameters: [String : AnyObject]?, jsonBody: [String:AnyObject]?, completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
-        /* 1. Set the parameters */
+        /* 1,2,3. Set the parameters, Build the URL and Configure the request */
         var urlString = ClientAPILibrary.BaseURLInsecure! + method
         if let mutableParameters = parameters {
             urlString = urlString.stringByAppendingString(ClientAPILibrary.escapedParameters(mutableParameters))
@@ -95,7 +95,7 @@ class ClientAPILibrary: NSObject {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.HTTPBody = NSJSONSerialization.dataWithJSONObject(jsonBody!, options: nil, error: &jsonifyError)
         
-        /* 4. Make the request */
+        /* 4. Build the request */
         let task = Session.dataTaskWithRequest(request) {data, response, downloadError in
             
             /* 5/6. Parse the data and use the data (happens in completion handler) */
@@ -115,7 +115,7 @@ class ClientAPILibrary: NSObject {
     
     class func taskForSecurePOSTMethod(method: String, parameters: [String : AnyObject]?, jsonBody: [String:AnyObject]?, completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
-        /* 1. Set the parameters */
+        /* 1,2,3. Set the parameters, Build the URL and Configure the request */
         var urlString = BaseURLInsecure! + method
         if let mutableParameters = parameters {
             urlString = urlString.stringByAppendingString(ClientAPILibrary.escapedParameters(mutableParameters))
@@ -129,7 +129,7 @@ class ClientAPILibrary: NSObject {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.HTTPBody = NSJSONSerialization.dataWithJSONObject(jsonBody!, options: nil, error: &jsonifyError)
         
-        /* 4. Make the request */
+        /* 4. Build the request */
         let task = Session.dataTaskWithRequest(request) {data, response, downloadError in
             
             /* 5/6. Parse the data and use the data (happens in completion handler) */

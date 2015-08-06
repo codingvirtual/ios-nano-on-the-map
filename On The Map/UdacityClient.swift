@@ -13,29 +13,34 @@ class UdacityClient: NSObject {
     
     /* Authentication state */
     static var sessionID : String?
-    static var userID : Int?
+    static var user: UdacityUser?
+    
+    override init() {
+        super.init()
+    }
     
     class func doLogin(userName: String!, password: String?, completionHandler: (result: AnyObject!, error: NSError?) -> Void) {
-        /* 1. Set the parameters */
+        /* 1. Set the parameters - this is handled in the init() of this class */
         ClientAPILibrary.configure(Constants.BaseURLSecure, baseURLInsecure: Constants.BaseURL)
         
         /* 2/3. Build the URL and configure the request */
-        let jsonBody: [String:AnyObject] = ["udacity":
-            [
-                "username": userName,
-                "password": password
-                ] as AnyObject
+        let jsonBody: [String:AnyObject] = [
+            "udacity":
+                [
+                    "username": userName,
+                    "password": password
+                ]
         ]
         
         
         /* 4. Build the request */
         var task = ClientAPILibrary.taskForSecurePOSTMethod (Methods.Authorization, parameters: nil, jsonBody: jsonBody) {result, error in
             if let jsonResult = result as? NSDictionary {
-                if let sessionDict = result.valueForKey("session") as? [String:AnyObject] {
+                if let sessionDict = result.valueForKey(Methods.Authorization) as? [String:AnyObject] {
                     UdacityClient.sessionID = sessionDict[JSONResponseKeys.SessionID] as? String
                 }
                 if let userDict = result.valueForKey("account") as? [String:AnyObject] {
-                    UdacityClient.userID = (userDict[JSONResponseKeys.UserID] as? String)!.toInt()
+                    UdacityClient.user = UdacityUser(userId: (userDict[JSONResponseKeys.UserID] as? String)!.toInt()!)
                 }
                 completionHandler(result: result, error: nil)
             } else {
@@ -45,5 +50,4 @@ class UdacityClient: NSObject {
         /* 7. Start the request */
         task.resume()
     }
-       
 }

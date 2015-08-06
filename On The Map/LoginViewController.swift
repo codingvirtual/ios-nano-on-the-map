@@ -17,6 +17,7 @@ class LoginViewController: UIViewController, UIWebViewDelegate {
     var urlRequest: NSURLRequest? = nil
     var requestToken: String? = nil
     var completionHandler : ((success: Bool, errorString: String?) -> Void)? = nil
+    static var user: UdacityUser? = nil
     
     // MARK: - Lifecycle
 
@@ -56,21 +57,14 @@ class LoginViewController: UIViewController, UIWebViewDelegate {
     }
 
     @IBAction func doLogin() {
-        println("email = \(email.text), pass = \(password.text)")
         UdacityClient.doLogin(email.text, password: password.text) { (result, error) in
             if result != nil {
                 println("there was a result")
-                
-                if let sessionDict = result.valueForKey("account") as? [String:AnyObject] {
-                    println(sessionDict["key"]!)
-
-                } else {
-                    println("Cant find key 'udacity' in \(result)")
-                }
-                
+                LoginViewController.user = result as? UdacityUser
             }
-            if error != nil {println("there was an error")}
-            println("done")
+            if error != nil {
+                println("there was an error")
+            }
             return
         }
     }
