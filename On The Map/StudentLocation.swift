@@ -9,26 +9,23 @@
 import Foundation
 import Parse
 
-class StudentLocation: PFObject, PFSubclassing {
+class StudentLocation: NSObject {
     
-    @NSManaged var uniqueKey: String?
-    @NSManaged var firstName: String?
-    @NSManaged var lastName: String?
-    @NSManaged var mapString: String?
-    @NSManaged var mediaURL: String?
-    @NSManaged var latitude: String?
-    @NSManaged var longitude: String?
+     var uniqueKey: String?
+     var firstName: String?
+     var lastName: String?
+     var mapString: String?
+     var mediaURL: String?
+     var latitude: Float?
+     var longitude: Float?
 
-    override class func initialize() {
-        struct Static {
-            static var onceToken : dispatch_once_t = 0;
-        }
-        dispatch_once(&Static.onceToken) {
-            self.registerSubclass()
-        }
-    }
-    
-    static func parseClassName() -> String {
-        return "StudentLocation"
+    init(studentLocationAsJSON: NSDictionary) {
+        self.uniqueKey = studentLocationAsJSON.valueForKey("uniqueKey") as? String
+        self.firstName = studentLocationAsJSON.valueForKey("firstName") as? String
+        self.lastName = studentLocationAsJSON.valueForKey("lastName") as? String
+        self.mapString = studentLocationAsJSON.valueForKey("mapString") as? String
+        self.mediaURL = studentLocationAsJSON.valueForKey("mediaURL") as? String
+        self.latitude = studentLocationAsJSON.valueForKey("latitude") as? Float
+        self.longitude = studentLocationAsJSON.valueForKey("longitude") as? Float
     }
 }
