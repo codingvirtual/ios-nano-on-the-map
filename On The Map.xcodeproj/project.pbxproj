@@ -10,6 +10,7 @@
 		370C988C1B77FFAA00474DAA /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370C988B1B77FFAA00474DAA /* RequestBuilder.swift */; };
 		370C988E1B7808B300474DAA /* RequestBuilder_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370C988D1B7808B300474DAA /* RequestBuilder_Tests.swift */; };
 		370C988F1B7808EC00474DAA /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370C988B1B77FFAA00474DAA /* RequestBuilder.swift */; };
+		371798FE1B815D9E00849151 /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F1EA971B74D4E4006AF3BF /* ParseClient.swift */; };
 		374B61271B6EA61D00A40985 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374B61261B6EA61D00A40985 /* AppDelegate.swift */; };
 		374B61291B6EA61D00A40985 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374B61281B6EA61D00A40985 /* LoginViewController.swift */; };
 		374B612C1B6EA61D00A40985 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 374B612A1B6EA61D00A40985 /* Main.storyboard */; };
@@ -502,6 +503,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				371798FE1B815D9E00849151 /* ParseClient.swift in Sources */,
 				370C988F1B7808EC00474DAA /* RequestBuilder.swift in Sources */,
 				37A749DC1B7389F300ACE6DA /* StudentLocation.swift in Sources */,
 				3790635E1B72F2E700EABF2C /* ClientAPILibrary.swift in Sources */,

@@ -10,7 +10,7 @@ import Foundation
 
 class ParseClient : NSObject {
     
-    func basicRequest() {
+    class func basicRequest(completionHandler: (result: AnyObject?, error: NSError?) -> Void) {
         let request = NSMutableURLRequest(URL: NSURL(string: "https://api.parse.com/1/classes/StudentLocation")!)
         request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
         request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
@@ -18,9 +18,10 @@ class ParseClient : NSObject {
         let task = session.dataTaskWithRequest(request) { data, response, error in
             if error != nil { // Handle error...
                 println(error)
-                return
+                completionHandler(result: nil, error: error)
             }
-            println(NSString(data: data, encoding: NSUTF8StringEncoding))
+            completionHandler(result: NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil), error: nil)
         }
+        task.resume()
     }
 }

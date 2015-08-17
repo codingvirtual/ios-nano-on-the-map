@@ -58,6 +58,7 @@ class LoginViewController: UIViewController, UIWebViewDelegate {
 
     @IBAction func doLogin() {
         UdacityClient.doLogin(email.text, password: password.text) { (result, error) in
+            println(result)
             if result != nil {
                 println("there was a result")
                 LoginViewController.user = result as? UdacityUser

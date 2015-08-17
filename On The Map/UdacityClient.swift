@@ -67,7 +67,7 @@ class UdacityClient: NSObject {
                     UdacityClient.user!.firstName = userInfo[JSONResponseKeys.FirstName] as? String
                     UdacityClient.user!.lastName = userInfo[JSONResponseKeys.LastName] as? String
                 }
-                completionHandler(result: UdacityClient.user as? AnyObject, error: nil)
+                completionHandler(result: UdacityClient.user! as? AnyObject, error: nil)
             } else {
                 completionHandler(result: nil, error: error)
             }
