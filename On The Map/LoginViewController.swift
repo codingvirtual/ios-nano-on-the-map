@@ -62,6 +62,7 @@ class LoginViewController: UIViewController, UIWebViewDelegate {
             if result != nil {
                 println("there was a result")
                 LoginViewController.user = result as? UdacityUser
+                // prepare to segue to the list of locations (pass the UdacityUser)
             }
             if error != nil {
                 println("there was an error")
