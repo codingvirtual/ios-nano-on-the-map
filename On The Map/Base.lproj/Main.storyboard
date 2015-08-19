@@ -153,23 +153,17 @@
                                     <navigationItem id="uir-J9-FgK">
                                         <barButtonItem key="rightBarButtonItem" title="Cancel" id="HI3-NA-9Ph">
                                             <connections>
-                                                <action selector="doCancel:" destination="CQJ-ZK-QB7" id="DHL-Nb-XyY"/>
+                                                <action selector="doCancel:" destination="Eeb-ZG-6fv" id="K1j-x8-X6g"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="249" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" usesAttributedText="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8qb-h9-fqC">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="249" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="http://" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8qb-h9-fqC">
                                 <rect key="frame" x="0.0" y="72" width="600" height="126"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="http://">
-                                        <attributes>
-                                            <font key="NSFont" size="12" name="Helvetica"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" keyboardType="URL"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0dd-oQ-Dbg">
@@ -179,6 +173,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="doSubmit:" destination="Eeb-ZG-6fv" eventType="touchUpInside" id="Naq-Vp-28u"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -198,6 +195,10 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Z5g-9a-xZQ" secondAttribute="trailing" constant="-16" id="yMo-L2-EFT"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="linkTF" destination="8qb-h9-fqC" id="jZa-Ga-4N8"/>
+                        <outlet property="mapView" destination="Z5g-9a-xZQ" id="Mx0-oN-fJT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7DG-bi-ulC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
