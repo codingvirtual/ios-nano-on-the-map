@@ -14,7 +14,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     // The map. See the setup in the Storyboard file. Note particularly that the view controller
     // is set up as the map view's delegate.
     @IBOutlet weak var mapView: MKMapView!
-
     
     // The "studentLocations" array is an array of dictionary objects that are downloaded from Parse
     var studentLocations: [StudentLocation]?
@@ -27,51 +26,87 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         ParseClient.getStudentLocations() {result, error in
             self.studentLocations = result as? [StudentLocation]
-            // The "locations" array is loaded with the sample data below. We are using the dictionaries
-            // to create map annotations. This would be more stylish if the dictionaries were being
-            // used to create custom structs. Perhaps StudentLocation structs.
-            
-            
-            // We will create an MKPointAnnotation for each dictionary in "locations". The
-            // point annotations will be stored in this array, and then provided to the map view.
-            var annotations = [MKPointAnnotation]()
-            
-            for dictionary in self.studentLocations! {
-                
-                // Notice that the float values are being used to create CLLocationDegree values.
-                // This is a version of the Double type.
-                let lat = CLLocationDegrees(Double(dictionary.latitude!))
-                let long = CLLocationDegrees(Double(dictionary.longitude!))
-                
-                // The lat and long are used to create a CLLocationCoordinates2D instance.
-                let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
-                
-                let first = dictionary.firstName! as String
-                let last = dictionary.lastName! as String
-                let mediaURL = dictionary.mediaURL! as String
-                
-                // Here we create the annotation and set its coordiate, title, and subtitle properties
-                var annotation = MKPointAnnotation()
-                annotation.coordinate = coordinate
-                annotation.title = "\(first) \(last)"
-                annotation.subtitle = mediaURL
-                
-                // Finally we place the annotation in an array of annotations.
-                annotations.append(annotation)
-            }
-            
-            // When the array is complete, we add the annotations to the map.
-            self.mapView.addAnnotations(annotations)
+            dispatch_async(dispatch_get_main_queue(), { () in
+                self.getLocations()
+                println("locations updated")
+            })
         }
     }
     
+    func getLocations() {
+        // The "locations" array is loaded with the sample data below. We are using the dictionaries
+        // to create map annotations. This would be more stylish if the dictionaries were being
+        // used to create custom structs. Perhaps StudentLocation structs.
+        
+        // We will create an MKPointAnnotation for each dictionary in "locations". The
+        // point annotations will be stored in this array, and then provided to the map view.
+        var annotations = [MKPointAnnotation]()
+        
+        for dictionary in self.studentLocations! {
+            
+            // Notice that the float values are being used to create CLLocationDegree values.
+            // This is a version of the Double type.
+            let lat = CLLocationDegrees(Double(dictionary.latitude!))
+            let long = CLLocationDegrees(Double(dictionary.longitude!))
+            
+            // The lat and long are used to create a CLLocationCoordinates2D instance.
+            let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+            
+            let first = dictionary.firstName! as String
+            let last = dictionary.lastName! as String
+            let mediaURL = dictionary.mediaURL! as String
+            
+            // Here we create the annotation and set its coordiate, title, and subtitle properties
+            var annotation = MKPointAnnotation()
+            annotation.coordinate = coordinate
+            annotation.title = "\(first) \(last)"
+            annotation.subtitle = mediaURL
+            
+            // Finally we place the annotation in an array of annotations.
+            annotations.append(annotation)
+        }
+        
+        // When the array is complete, we add the annotations to the map.
+        self.mapView.addAnnotations(annotations)
+     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        var barButtonItems = [UIBarButtonItem]()
+        barButtonItems.append(UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Refresh, target: self, action: "doRefresh"))
+        barButtonItems.append(UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "doAddLocation"))
+        self.navigationItem.rightBarButtonItems = barButtonItems
+    }
+    
+    func doRefresh() {
+        mapView.removeAnnotations(mapView.annotations)
+        ParseClient.getStudentLocations() {result, error in
+            self.studentLocations = result as? [StudentLocation]
+            dispatch_async(dispatch_get_main_queue(), { () in
+            self.getLocations()
+            println("locations updated")
+                })
 
-
+        }
+    }
+    
+    func showAlert() {
+        let alertController = UIAlertController()
+        alertController.title = "Alert"
+        alertController.message = "Here is an alert message"
         
-
-        
+        let okAction = UIAlertAction(title: "ok", style: UIAlertActionStyle.Default) { action in
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        alertController.addAction(okAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func doAddLocation() {
+        println("add location")
+        let detailController = storyboard!.instantiateViewControllerWithIdentifier("AddLocationViewController") as! AddLocationViewController
+        self.modalPresentationStyle = UIModalPresentationStyle.CurrentContext
+        navigationController!.presentViewController(detailController, animated: true, completion: nil)
     }
     
     // MARK: - MKMapViewDelegate

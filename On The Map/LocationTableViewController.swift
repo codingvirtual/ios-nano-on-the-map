@@ -13,6 +13,30 @@ class LocationTableViewController: UITableViewController, UITableViewDataSource,
     var studentLocations: [StudentLocation]? = nil
     var appDelegate: AppDelegate!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        var barButtonItems = [UIBarButtonItem]()
+        barButtonItems.append(UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Refresh, target: self, action: "doRefresh"))
+        barButtonItems.append(UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "doAddLocation"))
+        self.navigationItem.rightBarButtonItems = barButtonItems
+    }
+    
+    func doRefresh() {
+        ParseClient.getStudentLocations() {result, error in
+            self.studentLocations = result as? [StudentLocation]
+            dispatch_async(dispatch_get_main_queue(), { () in
+                self.tableView.reloadData()
+            })
+
+        }
+    }
+    func doAddLocation() {
+        println("add location")
+        let detailController = storyboard!.instantiateViewControllerWithIdentifier("AddLocationViewController") as! AddLocationViewController
+        self.modalPresentationStyle = UIModalPresentationStyle.CurrentContext
+        navigationController!.presentViewController(detailController, animated: true, completion: nil)
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         let object = UIApplication.sharedApplication().delegate
@@ -20,7 +44,9 @@ class LocationTableViewController: UITableViewController, UITableViewDataSource,
         
         ParseClient.getStudentLocations() {result, error in
             self.studentLocations = result as? [StudentLocation]
-            self.tableView.reloadData()
+            dispatch_async(dispatch_get_main_queue(), { () in
+                self.tableView.reloadData()
+            })
         }
     }
     
