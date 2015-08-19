@@ -121,7 +121,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qiy-Zd-Tqu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2798" y="-302"/>
+            <point key="canvasLocation" x="-514" y="-950"/>
         </scene>
         <!--Get Link View Controller-->
         <scene sceneID="pe0-Ox-ISY">
@@ -153,7 +153,7 @@
                                     <navigationItem id="uir-J9-FgK">
                                         <barButtonItem key="rightBarButtonItem" title="Cancel" id="HI3-NA-9Ph">
                                             <connections>
-                                                <action selector="doCancel:" destination="Eeb-ZG-6fv" id="K1j-x8-X6g"/>
+                                                <segue destination="1cX-WZ-71Z" kind="show" id="mBg-58-YUP"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -202,7 +202,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7DG-bi-ulC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2702" y="615"/>
+            <point key="canvasLocation" x="122" y="-844"/>
         </scene>
         <!--On The Map-->
         <scene sceneID="hYJ-oh-hpC">

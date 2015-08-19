@@ -28,11 +28,6 @@ class GetLinkViewController: UIViewController, MKMapViewDelegate  {
         mapView.centerCoordinate = userLocation.coordinate
     }
    
-    @IBAction func doCancel(sender: AnyObject) {
-        if let navigationController = self.navigationController {
-            navigationController.popToRootViewControllerAnimated(true)
-        }
-    }
     
     @IBAction func doSubmit(sender: AnyObject) {
     }
