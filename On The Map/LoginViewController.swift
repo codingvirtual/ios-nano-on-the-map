@@ -63,9 +63,11 @@ class LoginViewController: UIViewController, UIWebViewDelegate {
         UdacityClient.doLogin(email.text, password: password.text) { (result, error) in
             if error == nil {
                 // prepare to segue to the list of locations (pass the UdacityUser)
+                dispatch_async(dispatch_get_main_queue(), { () in
                 let nextController = self.storyboard!.instantiateViewControllerWithIdentifier("TabViewController") as! UITabBarController
                 self.modalPresentationStyle = UIModalPresentationStyle.CurrentContext
                 self.presentViewController(nextController, animated: true, completion: nil)
+                })
             }
             if error != nil {
                 println("there was an error: \(error)")

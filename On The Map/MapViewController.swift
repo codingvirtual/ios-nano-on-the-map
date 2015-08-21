@@ -83,9 +83,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         ParseClient.getStudentLocations() {result, error in
             self.studentLocations = result as? [StudentLocation]
             dispatch_async(dispatch_get_main_queue(), { () in
-            self.getLocations()
-            println("locations updated")
-                })
+                self.getLocations()
+                println("locations updated")
+            })
 
         }
     }
