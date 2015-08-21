@@ -17,7 +17,8 @@ class LoginViewController: UIViewController, UIWebViewDelegate {
     var urlRequest: NSURLRequest? = nil
     var requestToken: String? = nil
     var completionHandler : ((success: Bool, errorString: String?) -> Void)? = nil
-    static var user: UdacityUser? = nil
+    var appDelegate: AppDelegate!
+    var user: UdacityUser?
     
     // MARK: - Lifecycle
 
@@ -33,7 +34,9 @@ class LoginViewController: UIViewController, UIWebViewDelegate {
     override func viewWillAppear(animated: Bool) {
         
         super.viewWillAppear(animated)
-        
+        let object = UIApplication.sharedApplication().delegate
+        let appDelegate = object as! AppDelegate
+
         if urlRequest != nil {
             self.webView.loadRequest(urlRequest!)
         }
@@ -58,14 +61,14 @@ class LoginViewController: UIViewController, UIWebViewDelegate {
 
     @IBAction func doLogin() {
         UdacityClient.doLogin(email.text, password: password.text) { (result, error) in
-            println(result)
-            if result != nil {
-                println("there was a result")
-                LoginViewController.user = result as? UdacityUser
+            if error == nil {
                 // prepare to segue to the list of locations (pass the UdacityUser)
+                let nextController = self.storyboard!.instantiateViewControllerWithIdentifier("TabViewController") as! UITabBarController
+                self.modalPresentationStyle = UIModalPresentationStyle.CurrentContext
+                self.presentViewController(nextController, animated: true, completion: nil)
             }
             if error != nil {
-                println("there was an error")
+                println("there was an error: \(error)")
             }
             return
         }

@@ -13,23 +13,36 @@ import MapKit
 
 class GetLinkViewController: UIViewController, MKMapViewDelegate  {
     
-    var location: CLLocation?
-
+    var userLocation: CLLocation?
+    var mapString: String?
+    var mediaURL: String?
+    var student: UdacityUser?
+    
     @IBOutlet weak var linkTF: UITextField!
     
     @IBOutlet weak var mapView: MKMapView!
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        let object = UIApplication.sharedApplication().delegate
+        let appDelegate = object as! AppDelegate
+        //student = appDelegate.user!
+        student = UdacityUser(userId: 9999, firstName: "Greg", lastName: "The Test Guy")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("Location received \(location!.description)")
-        let userLocation = MKPointAnnotation()
-        userLocation.coordinate = location!.coordinate
-        mapView.addAnnotation(userLocation)
-        mapView.centerCoordinate = userLocation.coordinate
+        println("Location received \(userLocation!.description)")
+        let locationAnnotation = MKPointAnnotation()
+        locationAnnotation.coordinate = userLocation!.coordinate
+        mapView.addAnnotation(locationAnnotation)
+        mapView.centerCoordinate = userLocation!.coordinate
     }
    
     
     @IBAction func doSubmit(sender: AnyObject) {
+        mediaURL = linkTF.text
+        ParseClient.doPostStudentLocation(userLocation, mapString: mapString, mediaURL: mediaURL, student: student, completionHandler: nil)
     }
     
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {

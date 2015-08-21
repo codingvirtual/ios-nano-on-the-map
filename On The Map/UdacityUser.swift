@@ -17,6 +17,12 @@ struct UdacityUser {
     init(userId: Int) {
         self.userId = userId
     }
+
+    init(userId: Int, firstName: String, lastName: String) {
+        self.userId = userId
+        self.firstName = firstName
+        self.lastName = lastName
+    }
     
     init(jsonBody: NSDictionary) {
         if let userInfo = jsonBody.valueForKey("user") as? [String:AnyObject] {

@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 codingvirtual. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class UdacityClient: NSObject {
     
@@ -19,7 +19,7 @@ class UdacityClient: NSObject {
         super.init()
     }
     
-    class func doLogin(userName: String!, password: String?, completionHandler: (result: AnyObject!, error: NSError?) -> Void) {
+    class func doLogin(userName: String!, password: String?, completionHandler: ((result: AnyObject!, error: NSError?) -> Void)?) {
         /* 1. Set the parameters - this is handled in the init() of this class */
         ClientAPILibrary.configure(Constants.BaseURLSecure, baseURLInsecure: Constants.BaseURL)
         
@@ -35,26 +35,35 @@ class UdacityClient: NSObject {
         
         /* 4. Build the request */
         var task = ClientAPILibrary.taskForSecurePOSTMethod (Methods.Authorization, parameters: nil, jsonBody: jsonBody) {result, error in
+            let object = UIApplication.sharedApplication().delegate
+            let appDelegate =  object as! AppDelegate
             if let jsonResult = result as? NSDictionary {
                 if let sessionDict = result.valueForKey(Methods.Authorization) as? [String:AnyObject] {
                     UdacityClient.sessionID = sessionDict[JSONResponseKeys.SessionID] as? String
                 }
                 if let userDict = result.valueForKey("account") as? [String:AnyObject] {
-                    UdacityClient.user = UdacityUser(userId: (userDict[JSONResponseKeys.UserID] as? String)!.toInt()!)
+                    appDelegate.user = UdacityUser(userId: (userDict[JSONResponseKeys.UserID] as? String)!.toInt()!)
                 }
-                UdacityClient.getUserData(UdacityClient.user!, completionHandler: completionHandler)
+                if (completionHandler != nil) {
+                    UdacityClient.getUserData(appDelegate.user, completionHandler: completionHandler)
+                } else {
+                    UdacityClient.getUserData(appDelegate.user!, completionHandler: nil)
+                }
             } else {
-                completionHandler(result: nil, error: error)
+                if (completionHandler != nil) {completionHandler!(result: nil, error: error)}
             }
         }
         /* 7. Start the request */
         task.resume()
     }
     
-    class func getUserData(user: UdacityUser, completionHandler: (result: AnyObject!, error: NSError?) -> Void) {
+    class func getUserData(user: UdacityUser!, completionHandler: ((result: AnyObject! , error: NSError?) -> Void)?) {
+        let object = UIApplication.sharedApplication().delegate
+        let appDelegate =  object as! AppDelegate
+        
         /* 1. Set the parameters */
         ClientAPILibrary.configure(Constants.BaseURLSecure, baseURLInsecure: Constants.BaseURL)
-        var parameters = ["id": UdacityClient.user!.userId]
+        var parameters = ["id": appDelegate.user!.userId]
         
         /* 2/3. Build the URL and configure the request */
         var method = UdacityClient.Methods.GetUserData
@@ -64,15 +73,16 @@ class UdacityClient: NSObject {
         var task = ClientAPILibrary.taskForSecureGETMethod (Methods.GetUserData, parameters: parameters) {result, error in
             if let jsonResult = result as? NSDictionary {
                 if let userInfo = result.valueForKey("user") as? [String:AnyObject] {
-                    UdacityClient.user!.firstName = userInfo[JSONResponseKeys.FirstName] as? String
-                    UdacityClient.user!.lastName = userInfo[JSONResponseKeys.LastName] as? String
+                    appDelegate.user!.firstName = userInfo[JSONResponseKeys.FirstName] as? String
+                    appDelegate.user!.lastName = userInfo[JSONResponseKeys.LastName] as? String
                 }
-                completionHandler(result: UdacityClient.user! as? AnyObject, error: nil)
+                if (completionHandler != nil) {completionHandler!(result: user! as? AnyObject, error: nil)}
             } else {
-                completionHandler(result: nil, error: error)
+                if (completionHandler != nil) {completionHandler!(result: nil, error: error)}
             }
         }
         /* 7. Start the request */
         task.resume()
     }
+
 }

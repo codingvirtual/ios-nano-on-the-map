@@ -16,6 +16,7 @@
 		371799041B83A13C00849151 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371799031B83A13C00849151 /* MapViewController.swift */; };
 		3738B9331B83D9D70046E47D /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3738B9321B83D9D70046E47D /* AddLocationViewController.swift */; };
 		3738B9361B852A500046E47D /* GetLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3738B9351B852A500046E47D /* GetLinkViewController.swift */; };
+		374678AE1B87459A0072D4CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374B61261B6EA61D00A40985 /* AppDelegate.swift */; };
 		374B61271B6EA61D00A40985 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374B61261B6EA61D00A40985 /* AppDelegate.swift */; };
 		374B61291B6EA61D00A40985 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374B61281B6EA61D00A40985 /* LoginViewController.swift */; };
 		374B612C1B6EA61D00A40985 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 374B612A1B6EA61D00A40985 /* Main.storyboard */; };
@@ -87,7 +88,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		37EF162D1B7142C20088F6FC /* PBXContainerItemProxy */ = {
+		374678A81B87429F0072D4CD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 374B61191B6EA61D00A40985 /* Project object */;
 			proxyType = 1;
@@ -229,10 +230,10 @@
 		374B61231B6EA61D00A40985 /* On The Map */ = {
 			isa = PBXGroup;
 			children = (
+				374B61261B6EA61D00A40985 /* AppDelegate.swift */,
 				374B61481B6EA8F900A40985 /* Controllers */,
 				374B61471B6EA8F200A40985 /* Views */,
 				374B61461B6EA8EA00A40985 /* Models */,
-				374B61261B6EA61D00A40985 /* AppDelegate.swift */,
 				374B61241B6EA61D00A40985 /* Supporting Files */,
 			);
 			path = "On The Map";
@@ -418,7 +419,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				37EF162E1B7142C20088F6FC /* PBXTargetDependency */,
+				374678A91B87429F0072D4CD /* PBXTargetDependency */,
 			);
 			name = "On The Map Tests";
 			productName = "On The Map Tests";
@@ -504,20 +505,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				379063611B72F71C00EABF2C /* UdacityUser.swift in Sources */,
-				3790635F1B72F2EF00EABF2C /* ClientAPILibrary.swift in Sources */,
-				37A749D71B73842800ACE6DA /* StudentLocation.swift in Sources */,
-				3738B9361B852A500046E47D /* GetLinkViewController.swift in Sources */,
+				374B61271B6EA61D00A40985 /* AppDelegate.swift in Sources */,
 				370C988C1B77FFAA00474DAA /* RequestBuilder.swift in Sources */,
-				377F40BA1B70D398000B8A38 /* UdacityClient.swift in Sources */,
-				3738B9331B83D9D70046E47D /* AddLocationViewController.swift in Sources */,
 				377F40B81B70D32A000B8A38 /* UdacityConstants.swift in Sources */,
-				374B61291B6EA61D00A40985 /* LoginViewController.swift in Sources */,
-				371799041B83A13C00849151 /* MapViewController.swift in Sources */,
+				379063611B72F71C00EABF2C /* UdacityUser.swift in Sources */,
+				377F40BA1B70D398000B8A38 /* UdacityClient.swift in Sources */,
+				3790635F1B72F2EF00EABF2C /* ClientAPILibrary.swift in Sources */,
 				37F1EA981B74D4E4006AF3BF /* ParseClient.swift in Sources */,
+				374B61291B6EA61D00A40985 /* LoginViewController.swift in Sources */,
+				37A749D71B73842800ACE6DA /* StudentLocation.swift in Sources */,
+				3738B9331B83D9D70046E47D /* AddLocationViewController.swift in Sources */,
+				3738B9361B852A500046E47D /* GetLinkViewController.swift in Sources */,
+				371799041B83A13C00849151 /* MapViewController.swift in Sources */,
 				371799021B8175D300849151 /* LocationTableViewCell.swift in Sources */,
 				371799001B81723200849151 /* LocationTableViewController.swift in Sources */,
-				374B61271B6EA61D00A40985 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,14 +526,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				374678AE1B87459A0072D4CD /* AppDelegate.swift in Sources */,
 				371798FE1B815D9E00849151 /* ParseClient.swift in Sources */,
 				370C988F1B7808EC00474DAA /* RequestBuilder.swift in Sources */,
 				37A749DC1B7389F300ACE6DA /* StudentLocation.swift in Sources */,
 				3790635E1B72F2E700EABF2C /* ClientAPILibrary.swift in Sources */,
 				37A749D51B73106D00ACE6DA /* Object_Class_Tests.swift in Sources */,
 				370C988E1B7808B300474DAA /* RequestBuilder_Tests.swift in Sources */,
-				379063621B72F71C00EABF2C /* UdacityUser.swift in Sources */,
 				37EF162F1B7142CC0088F6FC /* UdacityConstants.swift in Sources */,
+				379063621B72F71C00EABF2C /* UdacityUser.swift in Sources */,
 				37EF16301B7142CC0088F6FC /* UdacityClient.swift in Sources */,
 				37A749DB1B73889400ACE6DA /* Parse_Tests.swift in Sources */,
 				37EF16211B713FDD0088F6FC /* On_The_Map_Tests.swift in Sources */,
@@ -542,10 +544,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		37EF162E1B7142C20088F6FC /* PBXTargetDependency */ = {
+		374678A91B87429F0072D4CD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 374B61201B6EA61D00A40985 /* On The Map */;
-			targetProxy = 37EF162D1B7142C20088F6FC /* PBXContainerItemProxy */;
+			targetProxy = 374678A81B87429F0072D4CD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

@@ -73,7 +73,8 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
     
     func showLinkController(location: CLLocation!) {
         let linkController = storyboard!.instantiateViewControllerWithIdentifier("GetLinkViewController") as! GetLinkViewController
-        linkController.location = location
+        linkController.userLocation = location
+        linkController.mapString = locationTV.text
         self.presentViewController(linkController, animated: true, completion: nil)
         
     }
