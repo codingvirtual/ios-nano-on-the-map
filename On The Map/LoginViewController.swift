@@ -96,9 +96,11 @@ class LoginViewController: UIViewController, UIWebViewDelegate {
         var debugMessage = String("")
         if usernameTextField.text.isEmpty {
             debugMessage = debugMessage.stringByAppendingString("Username Empty.\n")
-        } else if passwordTextField.text.isEmpty {
+        }
+        if passwordTextField.text.isEmpty {
             debugMessage = debugMessage.stringByAppendingString("Password Empty.")
-        } else {
+        }
+        if debugMessage.isEmpty {
             
             /*
             Steps for Authentication...
@@ -114,9 +116,22 @@ class LoginViewController: UIViewController, UIWebViewDelegate {
             
             */
             self.getRequestToken()
+        } else {
+            showAlert("Required fields missing", message: debugMessage)
         }
     }
 
+    func showAlert(title: String?, message: String?) {
+        let alertController = UIAlertController()
+        if title != nil {alertController.title = title} else {alertController.title = "This alert needs a title!"}
+        if message != nil {alertController.message = message} else {alertController.message = "This alert needs a message!"}
+        
+        let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default) { action in
+            alertController.dismissViewControllerAnimated(true, completion: nil)
+        }
+        alertController.addAction(okAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
 
     func getRequestToken() {
         UdacityClient.doLogin(usernameTextField.text, password: passwordTextField.text) { (result, error) in
