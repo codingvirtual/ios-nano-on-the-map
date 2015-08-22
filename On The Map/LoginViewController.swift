@@ -95,11 +95,16 @@ class LoginViewController: UIViewController, UIWebViewDelegate {
     @IBAction func doLogin() {
         var debugMessage = String("")
         if usernameTextField.text.isEmpty {
-            debugMessage = debugMessage.stringByAppendingString("Username Empty.\n")
+            debugMessage = debugMessage.stringByAppendingString("Please enter a username (email).\n")
+        } else if usernameTextField.text.uppercaseString.rangeOfString("^[A-Z0-9._%+-]+@[A-Z0-9.-]+[.]{1}[A-Z]{2,4}$", options: NSStringCompareOptions.RegularExpressionSearch) == nil {
+            // Attribution for above RegEx: http://www.regular-expressions.info/email.html
+            debugMessage = debugMessage.stringByAppendingString("Invalid email address provided.\n")
         }
+        
         if passwordTextField.text.isEmpty {
-            debugMessage = debugMessage.stringByAppendingString("Password Empty.")
+            debugMessage = debugMessage.stringByAppendingString("Please enter a password.")
         }
+
         if debugMessage.isEmpty {
             
             /*
@@ -117,7 +122,7 @@ class LoginViewController: UIViewController, UIWebViewDelegate {
             */
             self.getRequestToken()
         } else {
-            showAlert("Required fields missing", message: debugMessage)
+            showAlert("Please correct the following input errors:", message: debugMessage)
         }
     }
 
