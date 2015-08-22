@@ -251,7 +251,7 @@
                                     <constraint firstAttribute="height" constant="30" id="Czr-PH-edg"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p59-3i-SzG">
                                 <rect key="frame" x="16" y="285" width="568" height="30"/>
@@ -282,8 +282,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="email" destination="p59-3i-SzG" id="POm-NV-C3E"/>
-                        <outlet property="password" destination="0Jd-9s-w02" id="R47-OH-OUg"/>
+                        <outlet property="passwordTextField" destination="0Jd-9s-w02" id="isS-c7-f4U"/>
+                        <outlet property="usernameTextField" destination="p59-3i-SzG" id="Anc-FV-osT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hcF-eg-fTK" sceneMemberID="firstResponder"/>
