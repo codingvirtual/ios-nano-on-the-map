@@ -299,11 +299,11 @@
             </objects>
             <point key="canvasLocation" x="-898" y="85"/>
         </scene>
-        <!--Table-->
+        <!--List-->
         <scene sceneID="yyZ-wA-S23">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Rc1-ga-jCn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Table" id="NaD-hd-Weo"/>
+                    <tabBarItem key="tabBarItem" title="List" image="list" id="NaD-hd-Weo"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JBM-NJ-0ZL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -371,10 +371,13 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0GK-Nf-9DP">
-                                            <rect key="frame" x="16" y="13" width="568" height="17"/>
+                                            <rect key="frame" x="84" y="13" width="500" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pin" translatesAutoresizingMaskIntoConstraints="NO" id="tR7-1e-IiJ">
+                                            <rect key="frame" x="8" y="0.0" width="52" height="36"/>
+                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
@@ -399,7 +402,7 @@
         <scene sceneID="bhd-nc-CGh">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aJs-eJ-lh0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Map" id="xU7-DZ-Rw5"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="map" id="xU7-DZ-Rw5"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="lUT-qA-66a">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -416,6 +419,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="list" width="32" height="32"/>
+        <image name="map" width="32" height="32"/>
+        <image name="pin" width="32" height="32"/>
         <image name="udacity" width="256" height="256"/>
     </resources>
 </document>

@@ -74,7 +74,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
         var barButtonItems = [UIBarButtonItem]()
         barButtonItems.append(UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Refresh, target: self, action: "doRefresh"))
-        barButtonItems.append(UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "doAddLocation"))
+        barButtonItems.append(UIBarButtonItem(image: UIImage(named: "pin"), style: UIBarButtonItemStyle.Plain, target: self, action: "doAddLocation"))
         self.navigationItem.rightBarButtonItems = barButtonItems
     }
     
