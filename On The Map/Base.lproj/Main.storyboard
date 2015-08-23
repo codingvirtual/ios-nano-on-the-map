@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1cX-WZ-71Z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="x3P-cY-4BN">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -117,7 +117,7 @@
                     <connections>
                         <outlet property="findLocation" destination="byp-0q-2oH" id="V8s-6O-2NX"/>
                         <outlet property="locationTV" destination="80b-om-ycF" id="ZX8-Cu-hlb"/>
-                        <segue destination="Eeb-ZG-6fv" kind="showDetail" identifier="GetLink" id="n2m-yR-sJX"/>
+                        <segue destination="Eeb-ZG-6fv" kind="presentation" identifier="GetLink" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="ETX-Xf-uGZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qiy-Zd-Tqu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -154,7 +154,7 @@
                                     <navigationItem id="uir-J9-FgK">
                                         <barButtonItem key="rightBarButtonItem" title="Cancel" id="HI3-NA-9Ph">
                                             <connections>
-                                                <segue destination="1cX-WZ-71Z" kind="show" id="mBg-58-YUP"/>
+                                                <action selector="doCancel" destination="Eeb-ZG-6fv" id="fgf-vH-9Vd"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -260,7 +260,7 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to Udacity" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQm-fM-Xjc">
-                                <rect key="frame" x="238.5" y="245.5" width="126.5" height="20.5"/>
+                                <rect key="frame" x="239" y="246" width="127" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>

@@ -84,7 +84,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             self.studentLocations = result as? [StudentLocation]
             dispatch_async(dispatch_get_main_queue(), { () in
                 self.getLocations()
-                println("locations updated")
+                self.view.makeToast(message: "Locations have been updated", duration: HRToastDefaultDuration, position: HRToastPositionCenter)
             })
 
         }
@@ -105,8 +105,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     func doAddLocation() {
         println("add location")
         let detailController = storyboard!.instantiateViewControllerWithIdentifier("AddLocationViewController") as! AddLocationViewController
-        self.modalPresentationStyle = UIModalPresentationStyle.CurrentContext
-        navigationController!.presentViewController(detailController, animated: true, completion: nil)
+        modalPresentationStyle = UIModalPresentationStyle.FullScreen
+        modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
+        presentViewController(detailController, animated: true, completion: nil)
     }
     
     // MARK: - MKMapViewDelegate

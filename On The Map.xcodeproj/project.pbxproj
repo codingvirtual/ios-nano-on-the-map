@@ -14,6 +14,7 @@
 		371799001B81723200849151 /* LocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371798FF1B81723200849151 /* LocationTableViewController.swift */; };
 		371799021B8175D300849151 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371799011B8175D300849151 /* LocationTableViewCell.swift */; };
 		371799041B83A13C00849151 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371799031B83A13C00849151 /* MapViewController.swift */; };
+		371EBBD81B8976000002D58A /* HRToast+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371EBBD71B8976000002D58A /* HRToast+UIView.swift */; };
 		3738B9331B83D9D70046E47D /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3738B9321B83D9D70046E47D /* AddLocationViewController.swift */; };
 		3738B9361B852A500046E47D /* GetLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3738B9351B852A500046E47D /* GetLinkViewController.swift */; };
 		374B61271B6EA61D00A40985 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374B61261B6EA61D00A40985 /* AppDelegate.swift */; };
@@ -103,6 +104,7 @@
 		371798FF1B81723200849151 /* LocationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTableViewController.swift; sourceTree = "<group>"; };
 		371799011B8175D300849151 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
 		371799031B83A13C00849151 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		371EBBD71B8976000002D58A /* HRToast+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HRToast+UIView.swift"; sourceTree = "<group>"; };
 		3738B9321B83D9D70046E47D /* AddLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
 		3738B9341B8510FC0046E47D /* MapPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MapPlayground.playground; sourceTree = "<group>"; };
 		3738B9351B852A500046E47D /* GetLinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetLinkViewController.swift; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				374B61491B6EAA3400A40985 /* Storyboards */,
+				371EBBD71B8976000002D58A /* HRToast+UIView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -516,6 +519,7 @@
 				37A749D71B73842800ACE6DA /* StudentLocation.swift in Sources */,
 				3738B9331B83D9D70046E47D /* AddLocationViewController.swift in Sources */,
 				3738B9361B852A500046E47D /* GetLinkViewController.swift in Sources */,
+				371EBBD81B8976000002D58A /* HRToast+UIView.swift in Sources */,
 				371799041B83A13C00849151 /* MapViewController.swift in Sources */,
 				371799021B8175D300849151 /* LocationTableViewCell.swift in Sources */,
 				371799001B81723200849151 /* LocationTableViewController.swift in Sources */,

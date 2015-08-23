@@ -13,6 +13,7 @@ import CoreLocation
 class AddLocationViewController: UIViewController, UITextFieldDelegate {
 
     var location: CLLocation?
+    var linkController: GetLinkViewController?
     
     @IBOutlet weak var locationTV: UITextField!
     
@@ -52,7 +53,7 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
         locations.geocodeAddressString(locationTV.text, completionHandler: {(placemarks: [AnyObject]!, error: NSError!) in
             if error != nil {
                 dispatch_async(dispatch_get_main_queue(), { () in
-                    self.showAlert("Geocoding has failed!", message: error.description)
+                    self.showAlert("Problem Finding Location", message: "The location you entered cannot be converted to a GPS location. Please check the location you entered and try again.")
                 })
             } else if placemarks.count > 0 {
                 let placemark = placemarks[0] as! CLPlacemark
@@ -78,14 +79,15 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "GetLink" {
-            let linkController = segue.destinationViewController as! GetLinkViewController
-            linkController.userLocation = location
-            linkController.mapString = locationTV.text
+            linkController = segue.destinationViewController as? GetLinkViewController
+            linkController!.userLocation = location
+            linkController!.mapString = locationTV.text
+            linkController!.previousController = self
         }
     }
     
     func showLinkController() {
         self.performSegueWithIdentifier("GetLink", sender: self)
     }
-    
+
 }
