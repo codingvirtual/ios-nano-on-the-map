@@ -42,7 +42,31 @@ class GetLinkViewController: UIViewController, MKMapViewDelegate  {
     
     @IBAction func doSubmit(sender: AnyObject) {
         mediaURL = linkTF.text
-        ParseClient.doPostStudentLocation(userLocation, mapString: mapString, mediaURL: mediaURL, student: student, completionHandler: nil)
+        ParseClient.doPostStudentLocation(userLocation, mapString: mapString, mediaURL: mediaURL, student: student) {(result, error) in
+            if error == nil {
+
+                dispatch_async(dispatch_get_main_queue(), { () in
+                    self.showAlert("Success!", message: "Your post was added successfully")
+                })
+
+            } else {
+                dispatch_async(dispatch_get_main_queue(), { () in
+                    self.showAlert("ERROR!", message: "An error occurred when trying to post: \(error!.description)")
+                })
+            }
+        }
+    }
+    
+    func showAlert(title: String?, message: String?) {
+        let alertController = UIAlertController()
+        if title != nil {alertController.title = title} else {alertController.title = "This alert needs a title!"}
+        if message != nil {alertController.message = message} else {alertController.message = "This alert needs a message!"}
+        
+        let okAction = UIAlertAction(title: "ok", style: UIAlertActionStyle.Default) { action in
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        alertController.addAction(okAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
