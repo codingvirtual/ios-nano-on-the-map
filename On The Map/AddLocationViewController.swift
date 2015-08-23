@@ -12,6 +12,8 @@ import CoreLocation
 
 class AddLocationViewController: UIViewController, UITextFieldDelegate {
 
+    var location: CLLocation?
+    
     @IBOutlet weak var locationTV: UITextField!
     
     @IBOutlet weak var findLocation: UIButton!
@@ -49,12 +51,15 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
         
         locations.geocodeAddressString(locationTV.text, completionHandler: {(placemarks: [AnyObject]!, error: NSError!) in
             if error != nil {
-                self.showAlert("Geocoding has failed!", message: error.description)
+                dispatch_async(dispatch_get_main_queue(), { () in
+                    self.showAlert("Geocoding has failed!", message: error.description)
+                })
             } else if placemarks.count > 0 {
                 let placemark = placemarks[0] as! CLPlacemark
-                let location = placemark.location
-                self.showLinkController(location)
-                // self.showAlert("Geocoding succeeded!", message: location.description)
+                self.location = placemark.location
+                dispatch_async(dispatch_get_main_queue(), { () in
+                    self.showLinkController()
+                })
             }
         })
     }
@@ -71,12 +76,16 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
-    func showLinkController(location: CLLocation!) {
-        let linkController = storyboard!.instantiateViewControllerWithIdentifier("GetLinkViewController") as! GetLinkViewController
-        linkController.userLocation = location
-        linkController.mapString = locationTV.text
-        self.presentViewController(linkController, animated: true, completion: nil)
-        
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "GetLink" {
+            let linkController = segue.destinationViewController as! GetLinkViewController
+            linkController.userLocation = location
+            linkController.mapString = locationTV.text
+        }
+    }
+    
+    func showLinkController() {
+        self.performSegueWithIdentifier("GetLink", sender: self)
     }
     
 }

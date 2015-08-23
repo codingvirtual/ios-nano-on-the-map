@@ -117,6 +117,7 @@
                     <connections>
                         <outlet property="findLocation" destination="byp-0q-2oH" id="V8s-6O-2NX"/>
                         <outlet property="locationTV" destination="80b-om-ycF" id="ZX8-Cu-hlb"/>
+                        <segue destination="Eeb-ZG-6fv" kind="showDetail" identifier="GetLink" id="n2m-yR-sJX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qiy-Zd-Tqu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -202,7 +203,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7DG-bi-ulC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="122" y="-844"/>
+            <point key="canvasLocation" x="330" y="-900"/>
         </scene>
         <!--On The Map-->
         <scene sceneID="hYJ-oh-hpC">
@@ -259,13 +260,13 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to Udacity" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQm-fM-Xjc">
-                                <rect key="frame" x="239" y="236" width="127" height="21"/>
+                                <rect key="frame" x="238.5" y="245.5" width="126.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="udacity" translatesAutoresizingMaskIntoConstraints="NO" id="P2E-15-lhz">
-                                <rect key="frame" x="180" y="60" width="240" height="178"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="udacity" translatesAutoresizingMaskIntoConstraints="NO" id="P2E-15-lhz">
+                                <rect key="frame" x="180" y="50" width="240" height="178"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="178" id="Pho-yf-ldP"/>
                                     <constraint firstAttribute="width" constant="240" id="sAU-kb-f5o"/>
@@ -275,7 +276,7 @@
                         <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="dqR-Ag-83m" firstAttribute="trailing" secondItem="0Jd-9s-w02" secondAttribute="trailing" id="DvG-uA-iwg"/>
-                            <constraint firstItem="p59-3i-SzG" firstAttribute="top" secondItem="WQm-fM-Xjc" secondAttribute="bottom" constant="35" id="Epk-eQ-wO7"/>
+                            <constraint firstItem="p59-3i-SzG" firstAttribute="top" secondItem="WQm-fM-Xjc" secondAttribute="bottom" constant="25" id="Epk-eQ-wO7"/>
                             <constraint firstItem="0fU-0l-FR0" firstAttribute="top" secondItem="dqR-Ag-83m" secondAttribute="bottom" constant="188" id="Hgk-TY-ZCl"/>
                             <constraint firstItem="0Jd-9s-w02" firstAttribute="trailing" secondItem="p59-3i-SzG" secondAttribute="trailing" id="MZT-AI-nNO"/>
                             <constraint firstAttribute="centerX" secondItem="P2E-15-lhz" secondAttribute="centerX" id="SST-Ky-cta"/>
@@ -286,7 +287,7 @@
                             <constraint firstItem="0Jd-9s-w02" firstAttribute="leading" secondItem="p59-3i-SzG" secondAttribute="leading" id="lSA-og-7gb"/>
                             <constraint firstItem="dqR-Ag-83m" firstAttribute="top" secondItem="0Jd-9s-w02" secondAttribute="bottom" constant="18" id="uy0-Gv-wyZ"/>
                             <constraint firstItem="dqR-Ag-83m" firstAttribute="trailing" secondItem="M1I-TE-WsL" secondAttribute="trailingMargin" id="vtQ-hv-pcS"/>
-                            <constraint firstItem="P2E-15-lhz" firstAttribute="top" secondItem="4oA-9Q-X7O" secondAttribute="bottom" constant="40" id="yng-Ho-j1N"/>
+                            <constraint firstItem="P2E-15-lhz" firstAttribute="top" secondItem="4oA-9Q-X7O" secondAttribute="bottom" constant="30" id="yng-Ho-j1N"/>
                         </constraints>
                     </view>
                     <connections>
