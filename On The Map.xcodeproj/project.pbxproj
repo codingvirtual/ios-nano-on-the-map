@@ -15,6 +15,7 @@
 		371799021B8175D300849151 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371799011B8175D300849151 /* LocationTableViewCell.swift */; };
 		371799041B83A13C00849151 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371799031B83A13C00849151 /* MapViewController.swift */; };
 		371EBBD81B8976000002D58A /* HRToast+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371EBBD71B8976000002D58A /* HRToast+UIView.swift */; };
+		371EBBDA1B8D3B8B0002D58A /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371EBBD91B8D3B8B0002D58A /* UIViewControllerExtension.swift */; };
 		3738B9331B83D9D70046E47D /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3738B9321B83D9D70046E47D /* AddLocationViewController.swift */; };
 		3738B9361B852A500046E47D /* GetLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3738B9351B852A500046E47D /* GetLinkViewController.swift */; };
 		374B61271B6EA61D00A40985 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374B61261B6EA61D00A40985 /* AppDelegate.swift */; };
@@ -105,6 +106,7 @@
 		371799011B8175D300849151 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
 		371799031B83A13C00849151 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		371EBBD71B8976000002D58A /* HRToast+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HRToast+UIView.swift"; sourceTree = "<group>"; };
+		371EBBD91B8D3B8B0002D58A /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		3738B9321B83D9D70046E47D /* AddLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
 		3738B9341B8510FC0046E47D /* MapPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MapPlayground.playground; sourceTree = "<group>"; };
 		3738B9351B852A500046E47D /* GetLinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetLinkViewController.swift; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 				371799031B83A13C00849151 /* MapViewController.swift */,
 				3738B9321B83D9D70046E47D /* AddLocationViewController.swift */,
 				3738B9351B852A500046E47D /* GetLinkViewController.swift */,
+				371EBBD91B8D3B8B0002D58A /* UIViewControllerExtension.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -512,6 +515,7 @@
 				370C988C1B77FFAA00474DAA /* RequestBuilder.swift in Sources */,
 				377F40B81B70D32A000B8A38 /* UdacityConstants.swift in Sources */,
 				379063611B72F71C00EABF2C /* UdacityUser.swift in Sources */,
+				371EBBDA1B8D3B8B0002D58A /* UIViewControllerExtension.swift in Sources */,
 				377F40BA1B70D398000B8A38 /* UdacityClient.swift in Sources */,
 				3790635F1B72F2EF00EABF2C /* ClientAPILibrary.swift in Sources */,
 				37F1EA981B74D4E4006AF3BF /* ParseClient.swift in Sources */,

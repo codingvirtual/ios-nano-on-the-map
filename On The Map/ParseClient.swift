@@ -12,23 +12,34 @@ import CoreLocation
 class ParseClient : NSObject {
     
     class func getStudentLocations(completionHandler: ((result: AnyObject?, error: NSError?) -> Void)?) {
-        let request = NSMutableURLRequest(URL: NSURL(string: "https://api.parse.com/1/classes/StudentLocation?order=-createdAt&limit=100")!)
+        let request = NSMutableURLRequest(URL: NSURL(string: "https://api.parse.com/1/classe/StudentLocation?order=-createdAt&limit=100")!)
         request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
         request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request) { data, response, error in
-            if error != nil { // Handle error...
-                println(error)
+            if error != nil { // If an error was returned, this is a network transport error so just return it to the caller
                 if (completionHandler != nil) {completionHandler!(result: nil, error: error)}
             } else {
-                let parsedResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil) as! NSDictionary
-                var objectsArray = parsedResult["results"] as! NSArray
-                var locationsArray: [StudentLocation] = [StudentLocation]()
-                for item in objectsArray {
-                    let location = StudentLocation(studentLocationAsJSON: item as! NSDictionary)
-                    locationsArray.append(location)
+                // A transport error has not occurred, but need to check response code to make sure an HTTP response in the 200 range was received ("OK")
+                let serverResponse = response as! NSHTTPURLResponse
+                if (serverResponse.statusCode < 200 || serverResponse.statusCode > 299) {
+                    // Server responded with something not in the 200-OK range, so create an error object and invoke the completionHandler with it if there is one, else return
+                    let userInfo = NSDictionary(object: "A Server Error Occurred", forKey: NSURLErrorKey)
+                    if completionHandler != nil {
+                        completionHandler!(result: nil, error: NSError(domain: "Server", code: serverResponse.statusCode, userInfo: userInfo as [NSObject:AnyObject]))
+                    } else {
+                        return
+                    }
+                } else {  // the result is good and should be Parse data in JSON format
+                    let parsedResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil) as! NSDictionary
+                    var objectsArray = parsedResult["results"] as! NSArray
+                    var locationsArray: [StudentLocation] = [StudentLocation]()
+                    for item in objectsArray {
+                        let location = StudentLocation(studentLocationAsJSON: item as! NSDictionary)
+                        locationsArray.append(location)
+                    }
+                    if (completionHandler != nil) {completionHandler!(result: locationsArray, error: nil)}
                 }
-                if (completionHandler != nil) {completionHandler!(result: locationsArray, error: nil)}
             }
         }
         task.resume()

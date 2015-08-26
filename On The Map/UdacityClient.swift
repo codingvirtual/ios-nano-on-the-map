@@ -32,7 +32,6 @@ class UdacityClient: NSObject {
                 ]
         ]
         
-        
         /* 4. Build the request */
         var task = ClientAPILibrary.taskForSecurePOSTMethod (Methods.Authorization, parameters: nil, jsonBody: jsonBody) {result, error in
             let object = UIApplication.sharedApplication().delegate

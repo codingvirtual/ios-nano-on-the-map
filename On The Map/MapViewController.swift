@@ -25,18 +25,27 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         self.appDelegate = object as! AppDelegate
         
         ParseClient.getStudentLocations() {result, error in
-            self.studentLocations = result as? [StudentLocation]
-            dispatch_async(dispatch_get_main_queue(), { () in
-                self.getLocations()
-                println("locations updated")
-            })
+            if error == nil {
+                if self.studentLocations != nil {
+                    self.studentLocations = result as? [StudentLocation]
+                    dispatch_async(dispatch_get_main_queue(), { () in
+                        self.getLocations()
+                    })
+                }
+            } else {
+                if error?.domain == NSURLErrorDomain {
+                    self.showAlert("Network Error", message: "A network error has occurred: \(error!.localizedFailureReason)")
+                } else {
+                    self.showAlert("Server Error",
+                        message: "The server has returned an error: \n" +
+                        "Response Code: \(error!.code). \((error!.userInfo?[NSURLErrorKey]) as! String)")
+                }
+            }
         }
     }
     
     func getLocations() {
-        // The "locations" array is loaded with the sample data below. We are using the dictionaries
-        // to create map annotations. This would be more stylish if the dictionaries were being
-        // used to create custom structs. Perhaps StudentLocation structs.
+        
         
         // We will create an MKPointAnnotation for each dictionary in "locations". The
         // point annotations will be stored in this array, and then provided to the map view.
@@ -68,7 +77,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         // When the array is complete, we add the annotations to the map.
         self.mapView.addAnnotations(annotations)
-     }
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,25 +91,22 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     func doRefresh() {
         mapView.removeAnnotations(mapView.annotations)
         ParseClient.getStudentLocations() {result, error in
-            self.studentLocations = result as? [StudentLocation]
-            dispatch_async(dispatch_get_main_queue(), { () in
-                self.getLocations()
-                self.view.makeToast(message: "Locations have been updated", duration: HRToastDefaultDuration, position: HRToastPositionCenter)
-            })
-
+            if error == nil {
+                self.studentLocations = result as? [StudentLocation]
+                dispatch_async(dispatch_get_main_queue(), { () in
+                    self.getLocations()
+                    self.view.makeToast(message: "Locations have been updated", duration: HRToastDefaultDuration, position: HRToastPositionCenter)
+                })
+            } else {
+                if error?.domain == NSURLErrorDomain {
+                    self.showAlert("Network Error", message: "A network error has occurred: \(error!.localizedFailureReason)")
+                } else {
+                    self.showAlert("Server Error",
+                        message: "The server has returned an error: \n" +
+                        "Response Code: \(error!.code). \((error!.userInfo?[NSURLErrorKey]) as! String)")
+                }
+            }
         }
-    }
-    
-    func showAlert() {
-        let alertController = UIAlertController()
-        alertController.title = "Alert"
-        alertController.message = "Here is an alert message"
-        
-        let okAction = UIAlertAction(title: "ok", style: UIAlertActionStyle.Default) { action in
-            self.dismissViewControllerAnimated(true, completion: nil)
-        }
-        alertController.addAction(okAction)
-        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
     func doAddLocation() {

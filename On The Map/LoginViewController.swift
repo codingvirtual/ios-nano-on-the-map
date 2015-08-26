@@ -84,7 +84,6 @@ class LoginViewController: UIViewController {
         if usernameTextField.text.isEmpty {
             debugMessage = debugMessage.stringByAppendingString("Please enter a username (email).\n")
         } else if usernameTextField.text.uppercaseString.rangeOfString(regex, options: NSStringCompareOptions.RegularExpressionSearch) == nil {
-
             debugMessage = debugMessage.stringByAppendingString("Invalid email address provided.\n")
         }
         
@@ -99,24 +98,14 @@ class LoginViewController: UIViewController {
         }
     }
 
-    func showAlert(title: String?, message: String?) {
-        let alertController = UIAlertController()
-        if title != nil {alertController.title = title} else {alertController.title = "This alert needs a title!"}
-        if message != nil {alertController.message = message} else {alertController.message = "This alert needs a message!"}
-        
-        let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default) { action in
-            alertController.dismissViewControllerAnimated(true, completion: nil)
-        }
-        alertController.addAction(okAction)
-        self.presentViewController(alertController, animated: true, completion: nil)
-    }
-
     func getRequestToken() {
         UdacityClient.doLogin(usernameTextField.text, password: passwordTextField.text) { (result, error) in
             if error == nil {
                 self.completeLogin()
             } else {
-                println("there was an error: \(error)")
+                dispatch_async(dispatch_get_main_queue(), { () in
+                    self.showAlert("LOGIN FAILED", message: "Login attempt was unsuccessful with the following error: \n\(error?.description)")
+                })
             }
         }
     }

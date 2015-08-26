@@ -64,18 +64,7 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
             }
         })
     }
-    
-    func showAlert(title: String?, message: String?) {
-        let alertController = UIAlertController()
-        if title != nil {alertController.title = title} else {alertController.title = "This alert needs a title!"}
-        if message != nil {alertController.message = message} else {alertController.message = "This alert needs a message!"}
-        
-        let okAction = UIAlertAction(title: "ok", style: UIAlertActionStyle.Default) { action in
-            alertController.dismissViewControllerAnimated(true, completion: nil)
-        }
-        alertController.addAction(okAction)
-        self.presentViewController(alertController, animated: true, completion: nil)
-    }
+
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "GetLink" {

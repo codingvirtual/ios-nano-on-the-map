@@ -23,13 +23,24 @@ class LocationTableViewController: UITableViewController, UITableViewDataSource,
     
     func doRefresh() {
         ParseClient.getStudentLocations() {result, error in
-            self.studentLocations = result as? [StudentLocation]
-            dispatch_async(dispatch_get_main_queue(), { () in
-                self.tableView.reloadData()
-                self.view.makeToast(message: "Locations have been updated", duration: HRToastDefaultDuration, position: HRToastPositionCenter)
-            })
+            if error == nil {
+                self.studentLocations = result as? [StudentLocation]
+                dispatch_async(dispatch_get_main_queue(), { () in
+                    self.tableView.reloadData()
+                    self.view.makeToast(message: "Locations have been updated", duration: HRToastDefaultDuration, position: HRToastPositionCenter)
+                })
+            } else {
+                if error?.domain == NSURLErrorDomain {
+                    self.showAlert("Network Error", message: "A network error has occurred: \(error!.localizedFailureReason)")
+                } else {
+                    self.showAlert("Server Error",
+                        message: "The server has returned an error: \n" +
+                        "Response Code: \(error!.code). \((error!.userInfo?[NSURLErrorKey]) as! String)")
+                }
+            }
         }
     }
+    
     func doAddLocation() {
         println("add location")
         let detailController = storyboard!.instantiateViewControllerWithIdentifier("AddLocationViewController") as! AddLocationViewController
@@ -42,13 +53,7 @@ class LocationTableViewController: UITableViewController, UITableViewDataSource,
         super.viewWillAppear(animated)
         let object = UIApplication.sharedApplication().delegate
         self.appDelegate = object as! AppDelegate
-        
-        ParseClient.getStudentLocations() {result, error in
-            self.studentLocations = result as? [StudentLocation]
-            dispatch_async(dispatch_get_main_queue(), { () in
-                self.tableView.reloadData()
-            })
-        }
+        doRefresh()
     }
     
     
