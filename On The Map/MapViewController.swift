@@ -23,28 +23,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         super.viewWillAppear(animated)
         let object = UIApplication.sharedApplication().delegate
         self.appDelegate = object as! AppDelegate
-        
-        ParseClient.getStudentLocations() {result, error in
-            if error == nil {
-                if self.studentLocations != nil {
-                    self.studentLocations = result as? [StudentLocation]
-                    dispatch_async(dispatch_get_main_queue(), { () in
-                        self.getLocations()
-                    })
-                }
-            } else {
-                if error?.domain == NSURLErrorDomain {
-                    self.showAlert("Network Error", message: "A network error has occurred: \(error!.localizedFailureReason)")
-                } else {
-                    self.showAlert("Server Error",
-                        message: "The server has returned an error: \n" +
-                        "Response Code: \(error!.code). \((error!.userInfo?[NSURLErrorKey]) as! String)")
-                }
-            }
-        }
+        doRefresh()
     }
     
-    func getLocations() {
+    func createAnnotations() {
         
         
         // We will create an MKPointAnnotation for each dictionary in "locations". The
@@ -89,12 +71,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func doRefresh() {
-        mapView.removeAnnotations(mapView.annotations)
+        if mapView.annotations != nil { mapView.removeAnnotations(mapView.annotations) }
         ParseClient.getStudentLocations() {result, error in
             if error == nil {
                 self.studentLocations = result as? [StudentLocation]
                 dispatch_async(dispatch_get_main_queue(), { () in
-                    self.getLocations()
+                    self.createAnnotations()
                     self.view.makeToast(message: "Locations have been updated", duration: HRToastDefaultDuration, position: HRToastPositionCenter)
                 })
             } else {
