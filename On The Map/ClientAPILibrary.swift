@@ -180,7 +180,6 @@ class ClientAPILibrary: NSObject {
         
         if let parsedResult = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments, error: nil) as? [String : AnyObject] {
             
-            // TODO: Fix below reference to UdacityClient
             if let errorMessage = parsedResult[UdacityClient.JSONResponseKeys.StatusMessage] as? String {
                 
                 let userInfo = [NSLocalizedDescriptionKey : errorMessage]

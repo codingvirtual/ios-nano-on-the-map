@@ -114,7 +114,6 @@ class LoginViewController: UIViewController {
         }
     }
     
-    
     func completeLogin() {
         // prepare to segue to the list of locations
         let nextController = self.storyboard!.instantiateViewControllerWithIdentifier("TabViewController") as! UITabBarController

@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 codingvirtual. All rights reserved.
 //
 
-// TODO:
-// •  The Student Locations Tabbed View has a logout button in the upper left corner of the navigation bar. The logout button causes the Student Locations  Tabbed View to dismiss, and logs out of the current session.
 
 
 import Foundation
