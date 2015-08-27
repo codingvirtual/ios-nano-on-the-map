@@ -29,28 +29,33 @@ class UdacityClient: NSObject {
                 [
                     "username": userName,
                     "password": password
-                ]
+            ]
         ]
         
         /* 4. Build the request */
         var task = ClientAPILibrary.taskForSecurePOSTMethod (Methods.Authorization, parameters: nil, jsonBody: jsonBody) {result, error in
-            // TODO: Check value of error and respond accordingly
-            let object = UIApplication.sharedApplication().delegate
-            let appDelegate =  object as! AppDelegate
-            if let jsonResult = result as? NSDictionary {
-                if let sessionDict = result.valueForKey(Methods.Authorization) as? [String:AnyObject] {
-                    UdacityClient.sessionID = sessionDict[JSONResponseKeys.SessionID] as? String
+            if error != nil {  // an error has occurred - return it and stop further processing.
+                if completionHandler != nil {
+                    completionHandler!(result: result, error: error)
                 }
-                if let userDict = result.valueForKey("account") as? [String:AnyObject] {
-                    appDelegate.user = UdacityUser(userId: (userDict[JSONResponseKeys.UserID] as? String)!.toInt()!)
+            } else {  // the result is good and should be Parse data in JSON format
+                let object = UIApplication.sharedApplication().delegate
+                let appDelegate =  object as! AppDelegate
+                if let jsonResult = result as? NSDictionary {
+                    if let sessionDict = result!.valueForKey(Methods.Authorization) as? [String:AnyObject] {
+                        UdacityClient.sessionID = sessionDict[JSONResponseKeys.SessionID] as? String
+                    }
+                    if let userDict = result!.valueForKey("account") as? [String:AnyObject] {
+                        appDelegate.user = UdacityUser(userId: (userDict[JSONResponseKeys.UserID] as? String)!.toInt()!)
+                    }
+                    if (completionHandler != nil) {
+                        UdacityClient.getUserData(appDelegate.user, completionHandler: completionHandler)
+                    } else {
+                        UdacityClient.getUserData(appDelegate.user!, completionHandler: nil)
+                    }
+                } else { // error parsing data into JSON
+                    if (completionHandler != nil) {completionHandler!(result: nil, error: error)}
                 }
-                if (completionHandler != nil) {
-                    UdacityClient.getUserData(appDelegate.user, completionHandler: completionHandler)
-                } else {
-                    UdacityClient.getUserData(appDelegate.user!, completionHandler: nil)
-                }
-            } else {
-                if (completionHandler != nil) {completionHandler!(result: nil, error: error)}
             }
         }
         /* 7. Start the request */
@@ -85,5 +90,5 @@ class UdacityClient: NSObject {
         /* 7. Start the request */
         task.resume()
     }
-
+    
 }

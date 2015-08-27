@@ -33,7 +33,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-
+        
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         /* Configure the UI */
@@ -90,32 +90,36 @@ class LoginViewController: UIViewController {
         if passwordTextField.text.isEmpty {
             debugMessage = debugMessage.stringByAppendingString("Please enter a password.")
         }
-
+        
         if debugMessage.isEmpty {
             getRequestToken()
         } else {
             showAlert("Please correct the following input errors:", message: debugMessage)
         }
     }
-
+    
     func getRequestToken() {
         UdacityClient.doLogin(usernameTextField.text, password: passwordTextField.text) { (result, error) in
             if error == nil {
-                self.completeLogin()
+                dispatch_async(dispatch_get_main_queue(), { () in
+                    self.completeLogin()
+                })
             } else {
-                self.showAlert("LOGIN FAILED", message: "Login attempt was unsuccessful with the following error: \n\(error?.description)")
+                dispatch_async(dispatch_get_main_queue(), { () in
+                    self.showAlert("LOGIN FAILED",
+                        message: "Login attempt was unsuccessful: \n" +
+                        "\((error!.userInfo?[NSURLErrorKey]) as! String)")
+                })
             }
         }
     }
     
-
+    
     func completeLogin() {
         // prepare to segue to the list of locations
-        dispatch_async(dispatch_get_main_queue(), { () in
-            let nextController = self.storyboard!.instantiateViewControllerWithIdentifier("TabViewController") as! UITabBarController
-                self.modalPresentationStyle = UIModalPresentationStyle.CurrentContext
-                self.presentViewController(nextController, animated: true, completion: nil)
-        })
+        let nextController = self.storyboard!.instantiateViewControllerWithIdentifier("TabViewController") as! UITabBarController
+        self.modalPresentationStyle = UIModalPresentationStyle.CurrentContext
+        self.presentViewController(nextController, animated: true, completion: nil)
     }
 }
 
