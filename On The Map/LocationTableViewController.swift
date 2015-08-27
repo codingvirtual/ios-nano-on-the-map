@@ -33,7 +33,7 @@ class LocationTableViewController: UITableViewController, UITableViewDataSource,
     func doRefresh() {
         ParseClient.getStudentLocations() {result, error in
             if error == nil {
-                self.studentLocations = result as? [StudentLocation]
+                self.studentLocations = result
                 dispatch_async(dispatch_get_main_queue(), { () in
                     self.tableView.reloadData()
                     self.view.makeToast(message: "Locations have been updated", duration: HRToastDefaultDuration, position: HRToastPositionCenter)

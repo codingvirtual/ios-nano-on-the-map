@@ -81,7 +81,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         if mapView.annotations != nil { mapView.removeAnnotations(mapView.annotations) }
         ParseClient.getStudentLocations() {result, error in
             if error == nil {
-                self.studentLocations = result as? [StudentLocation]
+                self.studentLocations = result
                 dispatch_async(dispatch_get_main_queue(), { () in
                     self.createAnnotations()
                     self.view.makeToast(message: "Locations have been updated", duration: HRToastDefaultDuration, position: HRToastPositionCenter)

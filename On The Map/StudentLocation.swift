@@ -9,23 +9,24 @@
 import Foundation
 import Parse
 
-class StudentLocation: NSObject {
-    
-     var uniqueKey: String?
-     var firstName: String?
-     var lastName: String?
-     var mapString: String?
-     var mediaURL: String?
-     var latitude: Float?
-     var longitude: Float?
+struct StudentLocation {
+//class StudentLocation: NSObject {
 
-    init(studentLocationAsJSON: NSDictionary) {
-        self.uniqueKey = studentLocationAsJSON.valueForKey("uniqueKey") as? String
-        self.firstName = studentLocationAsJSON.valueForKey("firstName") as? String
-        self.lastName = studentLocationAsJSON.valueForKey("lastName") as? String
-        self.mapString = studentLocationAsJSON.valueForKey("mapString") as? String
-        self.mediaURL = studentLocationAsJSON.valueForKey("mediaURL") as? String
-        self.latitude = studentLocationAsJSON.valueForKey("latitude") as? Float
-        self.longitude = studentLocationAsJSON.valueForKey("longitude") as? Float
+     var uniqueKey: String? = nil
+     var firstName: String? = nil
+     var lastName: String? = nil
+     var mapString: String? = nil
+     var mediaURL: String? = nil
+     var latitude: Float? = nil
+     var longitude: Float? = nil
+   
+    init(dictionary: [String : AnyObject]) {
+        uniqueKey = dictionary["uniqueKey"] as? String
+        firstName = dictionary["firstName"] as? String
+        lastName = dictionary["lastName"] as? String
+        mapString = dictionary["mapString"] as? String
+        mediaURL = dictionary["mediaURL"] as? String
+        latitude = dictionary["latitude"] as? Float
+        longitude = dictionary["longitude"] as? Float
     }
 }
