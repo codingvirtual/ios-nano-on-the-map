@@ -6,6 +6,10 @@
 //  Copyright (c) 2015 codingvirtual. All rights reserved.
 //
 
+// TODO:
+// •  The Student Locations Tabbed View has a logout button in the upper left corner of the navigation bar. The logout button causes the Student Locations  Tabbed View to dismiss, and logs out of the current session.
+
+
 import Foundation
 import UIKit
 class LocationTableViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate  {
@@ -19,6 +23,13 @@ class LocationTableViewController: UITableViewController, UITableViewDataSource,
         barButtonItems.append(UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Refresh, target: self, action: "doRefresh"))
         barButtonItems.append(UIBarButtonItem(image: UIImage(named: "pin"), style: UIBarButtonItemStyle.Plain, target: self, action: "doAddLocation"))
         self.navigationItem.rightBarButtonItems = barButtonItems
+    }
+    
+    @IBAction func doLogout() {
+        appDelegate.user = nil
+        let loginController = storyboard!.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
+        modalPresentationStyle = UIModalPresentationStyle.FullScreen
+        presentViewController(loginController, animated: true, completion: nil)
     }
     
     func doRefresh() {

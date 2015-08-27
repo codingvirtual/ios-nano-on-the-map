@@ -9,6 +9,11 @@
 import Foundation
 import CoreLocation
 
+//  TODO:
+//  Does the app indicate activity during the geocoding?
+//  Required: • An activity indicator is displayed during geocoding, and returns to normal state on completion.
+//  Udacious: • The app shows additional indications of activity, such as modifying alpha/transparency of interface elements.
+
 class ParseClient : NSObject {
     
     class func getStudentLocations(completionHandler: ((result: AnyObject?, error: NSError?) -> Void)?) {

@@ -227,7 +227,7 @@
         <!--Login-->
         <scene sceneID="Tey-Ai-HRa">
             <objects>
-                <viewController title="Login" id="x3P-cY-4BN" customClass="LoginViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" title="Login" id="x3P-cY-4BN" customClass="LoginViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4oA-9Q-X7O"/>
                         <viewControllerLayoutGuide type="bottom" id="0fU-0l-FR0"/>
@@ -259,7 +259,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to Udacity" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQm-fM-Xjc">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Login to Udacity" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQm-fM-Xjc">
                                 <rect key="frame" x="239" y="246" width="127" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -346,7 +346,13 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="On The Map" id="ZpL-tE-wRu"/>
+                    <navigationItem key="navigationItem" title="On The Map" id="ZpL-tE-wRu">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="0Mx-bS-Coh">
+                            <connections>
+                                <action selector="doLogout" destination="XgQ-Go-QXm" id="Qpd-o5-q7u"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="mapView" destination="k40-Ud-7a8" id="Zfs-EN-xKs"/>
@@ -391,7 +397,13 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="On The Map" id="zv5-nf-82J"/>
+                    <navigationItem key="navigationItem" title="On The Map" id="zv5-nf-82J">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="2SF-cV-4tC">
+                            <connections>
+                                <action selector="doLogout" destination="6o0-y6-3dB" id="hdt-Bb-7jb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MTD-Wg-cVq" userLabel="First Responder" sceneMemberID="firstResponder"/>

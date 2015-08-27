@@ -26,6 +26,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         doRefresh()
     }
     
+    @IBAction func doLogout() {
+        appDelegate.user = nil
+        let loginController = storyboard!.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
+        modalPresentationStyle = UIModalPresentationStyle.FullScreen
+        presentViewController(loginController, animated: true, completion: nil)
+    }
+    
     func createAnnotations() {
         
         
@@ -92,7 +99,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func doAddLocation() {
-        println("add location")
         let detailController = storyboard!.instantiateViewControllerWithIdentifier("AddLocationViewController") as! AddLocationViewController
         modalPresentationStyle = UIModalPresentationStyle.FullScreen
         modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
