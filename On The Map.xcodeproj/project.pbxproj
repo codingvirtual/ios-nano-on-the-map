@@ -246,6 +246,7 @@
 		374B61241B6EA61D00A40985 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				371EBBD71B8976000002D58A /* HRToast+UIView.swift */,
 				3738B9341B8510FC0046E47D /* MapPlayground.playground */,
 				379063521B72A52400EABF2C /* libsqlite3.dylib */,
 				379063501B72A51B00EABF2C /* libz.dylib */,
@@ -280,7 +281,6 @@
 			isa = PBXGroup;
 			children = (
 				374B61491B6EAA3400A40985 /* Storyboards */,
-				371EBBD71B8976000002D58A /* HRToast+UIView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";

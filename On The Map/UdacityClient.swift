@@ -34,6 +34,7 @@ class UdacityClient: NSObject {
         
         /* 4. Build the request */
         var task = ClientAPILibrary.taskForSecurePOSTMethod (Methods.Authorization, parameters: nil, jsonBody: jsonBody) {result, error in
+            // TODO: Check value of error and respond accordingly
             let object = UIApplication.sharedApplication().delegate
             let appDelegate =  object as! AppDelegate
             if let jsonResult = result as? NSDictionary {
@@ -70,6 +71,7 @@ class UdacityClient: NSObject {
         
         /* 4. Build the request */
         var task = ClientAPILibrary.taskForSecureGETMethod (Methods.GetUserData, parameters: parameters) {result, error in
+            // TODO: Check the value of error and respond accordingly
             if let jsonResult = result as? NSDictionary {
                 if let userInfo = result.valueForKey("user") as? [String:AnyObject] {
                     appDelegate.user!.firstName = userInfo[JSONResponseKeys.FirstName] as? String

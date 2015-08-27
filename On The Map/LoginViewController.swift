@@ -103,9 +103,7 @@ class LoginViewController: UIViewController {
             if error == nil {
                 self.completeLogin()
             } else {
-                dispatch_async(dispatch_get_main_queue(), { () in
-                    self.showAlert("LOGIN FAILED", message: "Login attempt was unsuccessful with the following error: \n\(error?.description)")
-                })
+                self.showAlert("LOGIN FAILED", message: "Login attempt was unsuccessful with the following error: \n\(error?.description)")
             }
         }
     }
