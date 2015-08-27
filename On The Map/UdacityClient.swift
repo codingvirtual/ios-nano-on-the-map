@@ -15,10 +15,6 @@ class UdacityClient: NSObject {
     static var sessionID : String?
     static var user: UdacityUser?
     
-    override init() {
-        super.init()
-    }
-    
     class func doLogin(userName: String!, password: String?, completionHandler: ((result: AnyObject!, error: NSError?) -> Void)?) {
         /* 1. Set the parameters - this is handled in the init() of this class */
         ClientAPILibrary.configure(Constants.BaseURLSecure, baseURLInsecure: Constants.BaseURL)

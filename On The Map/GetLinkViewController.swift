@@ -53,17 +53,19 @@ class GetLinkViewController: UIViewController, MKMapViewDelegate  {
         ParseClient.doPostStudentLocation(userLocation, mapString: mapString, mediaURL: mediaURL, student: student) {(result, error) in
             if error == nil {
                 dispatch_async(dispatch_get_main_queue(), { () in
-                    self.showAlert("Success!", message: "Your post was added successfully", withDismissal: true)
+                    self.showAlert("Success!", message: "Your post was added successfully") { () in
+                        self.doCancel()
+                    }
                 })
 
             } else {
                 dispatch_async(dispatch_get_main_queue(), { () in
-                    self.showAlert("ERROR!", message: "An error occurred when trying to post: \(error!.description)", withDismissal: false)
+                    self.showAlert("ERROR!", message: "An error occurred when trying to post: \(error!.description)")
                 })
             }
             }
         } else {
-            showAlert("URL Invalid", message: "The URL you entered is invalid or blank. Please check the URL and try again.", withDismissal: false)
+            showAlert("URL Invalid", message: "The URL you entered is invalid or blank. Please check the URL and try again.")
         }
     }
     
@@ -73,21 +75,6 @@ class GetLinkViewController: UIViewController, MKMapViewDelegate  {
         return url.rangeOfString(regex, options: NSStringCompareOptions.RegularExpressionSearch) != nil
     }
     
-    func showAlert(title: String?, message: String?, withDismissal: Bool?) {
-        let alertController = UIAlertController()
-        if title != nil {alertController.title = title} else {alertController.title = "This alert needs a title!"}
-        if message != nil {alertController.message = message} else {alertController.message = "This alert needs a message!"}
-        
-        let okAction = UIAlertAction(title: "ok", style: UIAlertActionStyle.Default) { action in
-            if withDismissal! {
-                self.doCancel()
-            } else {
-                alertController.dismissViewControllerAnimated(true, completion: nil)
-            }
-        }
-        alertController.addAction(okAction)
-        self.presentViewController(alertController, animated: true, completion: nil)
-    }
     
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
         
