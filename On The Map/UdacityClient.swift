@@ -76,15 +76,18 @@ class UdacityClient: NSObject {
         
         /* 4. Build the request */
         var task = ClientAPILibrary.taskForSecureGETMethod (Methods.GetUserData, parameters: parameters) {result, error in
-            // TODO: Check the value of error and respond accordingly
-            if let jsonResult = result as? NSDictionary {
-                if let userInfo = result.valueForKey("user") as? [String:AnyObject] {
-                    appDelegate.user!.firstName = userInfo[JSONResponseKeys.FirstName] as? String
-                    appDelegate.user!.lastName = userInfo[JSONResponseKeys.LastName] as? String
+            if error == nil { // no errors occurred
+                if let jsonResult = result as? NSDictionary {
+                    if let userInfo = result.valueForKey("user") as? [String:AnyObject] {
+                        appDelegate.user!.firstName = userInfo[JSONResponseKeys.FirstName] as? String
+                        appDelegate.user!.lastName = userInfo[JSONResponseKeys.LastName] as? String
+                    }
+                    if (completionHandler != nil) {completionHandler!(result: user! as? AnyObject, error: nil)}
+                } else {  // parsing JSON failed. Return the error
+                    if (completionHandler != nil) {completionHandler!(result: nil, error: error)}
                 }
-                if (completionHandler != nil) {completionHandler!(result: user! as? AnyObject, error: nil)}
-            } else {
-                if (completionHandler != nil) {completionHandler!(result: nil, error: error)}
+            } else {  // an error occurred getting the user data. return the error
+                if completionHandler != nil {completionHandler!(result: nil, error: error)}
             }
         }
         /* 7. Start the request */
