@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		370C988C1B77FFAA00474DAA /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370C988B1B77FFAA00474DAA /* RequestBuilder.swift */; };
-		370C988E1B7808B300474DAA /* RequestBuilder_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370C988D1B7808B300474DAA /* RequestBuilder_Tests.swift */; };
-		370C988F1B7808EC00474DAA /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370C988B1B77FFAA00474DAA /* RequestBuilder.swift */; };
 		371798FE1B815D9E00849151 /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F1EA971B74D4E4006AF3BF /* ParseClient.swift */; };
 		371799001B81723200849151 /* LocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371798FF1B81723200849151 /* LocationTableViewController.swift */; };
 		371799021B8175D300849151 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371799011B8175D300849151 /* LocationTableViewCell.swift */; };
@@ -100,8 +97,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		370C988B1B77FFAA00474DAA /* RequestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
-		370C988D1B7808B300474DAA /* RequestBuilder_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestBuilder_Tests.swift; sourceTree = "<group>"; };
 		371798FF1B81723200849151 /* LocationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTableViewController.swift; sourceTree = "<group>"; };
 		371799011B8175D300849151 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
 		371799031B83A13C00849151 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = MapViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -272,7 +267,6 @@
 				37EF16331B715A810088F6FC /* ClientAPILibrary.swift */,
 				377F40B61B70D318000B8A38 /* Parse */,
 				377F40B51B70D311000B8A38 /* Udacity */,
-				370C988B1B77FFAA00474DAA /* RequestBuilder.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -377,7 +371,6 @@
 		37EF161D1B713FDD0088F6FC /* On The Map Tests */ = {
 			isa = PBXGroup;
 			children = (
-				370C988D1B7808B300474DAA /* RequestBuilder_Tests.swift */,
 				37A749DA1B73889400ACE6DA /* Parse_Tests.swift */,
 				37A749D41B73106D00ACE6DA /* Object_Class_Tests.swift */,
 				37EF16201B713FDD0088F6FC /* On_The_Map_Tests.swift */,
@@ -512,7 +505,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				374B61271B6EA61D00A40985 /* AppDelegate.swift in Sources */,
-				370C988C1B77FFAA00474DAA /* RequestBuilder.swift in Sources */,
 				377F40B81B70D32A000B8A38 /* UdacityConstants.swift in Sources */,
 				379063611B72F71C00EABF2C /* UdacityUser.swift in Sources */,
 				371EBBDA1B8D3B8B0002D58A /* UIViewControllerExtension.swift in Sources */,
@@ -536,11 +528,9 @@
 			files = (
 				3772023C1B88F6C6008312AB /* AppDelegate.swift in Sources */,
 				371798FE1B815D9E00849151 /* ParseClient.swift in Sources */,
-				370C988F1B7808EC00474DAA /* RequestBuilder.swift in Sources */,
 				37A749DC1B7389F300ACE6DA /* StudentLocation.swift in Sources */,
 				3790635E1B72F2E700EABF2C /* ClientAPILibrary.swift in Sources */,
 				37A749D51B73106D00ACE6DA /* Object_Class_Tests.swift in Sources */,
-				370C988E1B7808B300474DAA /* RequestBuilder_Tests.swift in Sources */,
 				37EF162F1B7142CC0088F6FC /* UdacityConstants.swift in Sources */,
 				379063621B72F71C00EABF2C /* UdacityUser.swift in Sources */,
 				37EF16301B7142CC0088F6FC /* UdacityClient.swift in Sources */,

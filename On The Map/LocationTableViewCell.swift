@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class LocationTableViewCell: UITableViewCell {
-    
-    @IBOutlet weak var studentName: UITextField?
-
+	
+	@IBOutlet weak var studentName: UITextField?
+	
 }
