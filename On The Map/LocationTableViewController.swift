@@ -51,7 +51,6 @@ class LocationTableViewController: UITableViewController, UITableViewDataSource,
 	}
 	
 	func doAddLocation() {
-		println("add location")
 		let detailController = storyboard!.instantiateViewControllerWithIdentifier("AddLocationViewController") as! AddLocationViewController
 		modalPresentationStyle = UIModalPresentationStyle.FullScreen
 		modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal

@@ -38,7 +38,6 @@ class GetLinkViewController: UIViewController, MKMapViewDelegate  {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		println("Location received \(userLocation!.description)")
 		let locationAnnotation = MKPointAnnotation()
 		locationAnnotation.coordinate = userLocation!.coordinate
 		mapView.addAnnotation(locationAnnotation)
