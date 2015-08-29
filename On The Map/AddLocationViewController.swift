@@ -15,6 +15,8 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
 	var location: CLLocation?
 	var linkController: GetLinkViewController?
 	
+	@IBOutlet weak var activityView: UIActivityIndicatorView!
+	
 	@IBOutlet weak var locationTV: UITextField!
 	
 	@IBOutlet weak var findLocation: UIButton!
@@ -23,7 +25,6 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
 		locationTV.delegate = self
 		findLocation.enabled = false;
 		findLocation.setTitle("Enter Location", forState: UIControlState.Disabled)
-		
 	}
 	
 	override func viewWillAppear(animated: Bool) {
@@ -57,7 +58,6 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
 	}
 	
 	func updateFindButtonState() {
-		println("change")
 		if locationTV.text.isEmpty {
 			findLocation!.enabled = false
 		} else {
@@ -66,8 +66,12 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
 	}
 	
 	func getLocation() {
+		activityView.startAnimating()
 		var locations = CLGeocoder()
 		locations.geocodeAddressString(locationTV.text, completionHandler: {(placemarks: [AnyObject]!, error: NSError!) in
+			dispatch_async(dispatch_get_main_queue(), { () in
+				self.activityView.stopAnimating()
+			})
 			if error != nil {
 				dispatch_async(dispatch_get_main_queue(), { () in
 					self.showAlert("Problem Finding Location", message: "The location you entered cannot be converted to a GPS location. Please check the location you entered and try again.")
