@@ -17,9 +17,6 @@ import Foundation
 import UIKit
 class LocationTableViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate  {
 	
-	// List of student posting locations - the ultimate data source for the table
-	// The list gets populated via an HTTP call to the Parse API that queries the Udacity database.
-	var studentLocations: [StudentLocation]? = nil
 	// A reference the app delegate which stores the UdacityUser that is logged into the app
 	let appDelegate: AppDelegate! = UIApplication.sharedApplication().delegate as! AppDelegate
 	
@@ -65,7 +62,7 @@ class LocationTableViewController: UITableViewController, UITableViewDataSource,
 			if error == nil {
 				// The request was successful, so update the list of locations in storage
 				// then display a "toast" (sorry for the Android reference) to notify the user that the update was successful
-				self.studentLocations = result
+				AppConfiguration.sharedConfiguration.studentLocations = result
 				dispatch_async(dispatch_get_main_queue(), { () in
 					self.tableView.reloadData()
 					self.view.makeToast(message: "Locations have been updated", duration: HRToastDefaultDuration, position: HRToastPositionCenter)
@@ -97,14 +94,14 @@ class LocationTableViewController: UITableViewController, UITableViewDataSource,
 	// Required override of the DataSource delegate protocol that returns the number of rows (elements in the studentLocations array)
 	// that are in the data set.
 	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		if (self.studentLocations == nil) {return 0}
-		return self.studentLocations!.count
+		if (AppConfiguration.sharedConfiguration.studentLocations == nil) {return 0}
+		return AppConfiguration.sharedConfiguration.studentLocations!.count
 	}
 	
 	// Required override of the DataSource delegate protocol that returns a specific cell of data from the datasource
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCellWithIdentifier("LocationTableViewCell") as! UITableViewCell
-		let location = studentLocations![indexPath.row]
+		let location = AppConfiguration.sharedConfiguration.studentLocations![indexPath.row]
 		// Set the first and last name of the student as the cell text
 		cell.textLabel!.text = location.firstName! + " " + location.lastName!
 		
@@ -115,7 +112,7 @@ class LocationTableViewController: UITableViewController, UITableViewDataSource,
 	// In this case, it launches Safari to open the URL that the student posted to the database.
 	// NOTE: additional data validation could be performed to ensure that the data is in fact a valid URL.
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		if let studentURL = studentLocations![indexPath.row].mediaURL {
+		if let studentURL = AppConfiguration.sharedConfiguration.studentLocations![indexPath.row].mediaURL {
 			UIApplication.sharedApplication().openURL(NSURL(string: studentURL)!)
 		}
 	}

@@ -10,7 +10,10 @@ import Foundation
 
 public class AppConfiguration {
 	
-	var user: UdacityUser?
+	// A reference to the currently logged-in user
+	var user: UdacityUser? = nil
+	// List of student posting locations - the ultimate data source for the table
+	var studentLocations: [StudentLocation]? = nil
 	
 	public class var sharedConfiguration: AppConfiguration {
 		struct Singleton {

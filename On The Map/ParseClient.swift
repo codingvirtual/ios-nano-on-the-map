@@ -18,7 +18,7 @@ class ParseClient : NSObject {
 	// have been posted.
 	class func getStudentLocations(completionHandler: ((result: [StudentLocation]?, error: NSError?) -> Void)?) {
 		// configure the request
-		let request = NSMutableURLRequest(URL: NSURL(string: "https://api.parse.com/1/classes/StudentLocation?order=-updateAt&limit=100")!)
+		let request = NSMutableURLRequest(URL: NSURL(string: "https://api.parse.com/1/classes/StudentLocation?order=-updatedAt&limit=100")!)
 		// set up the parameters
 		request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
 		request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
@@ -40,7 +40,7 @@ class ParseClient : NSObject {
 					// First, convert the result to a dictionary for further processing
 					let parsedResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil) as! NSDictionary
 					// now create an array for easier iteration.
-					var objectsArray = parsedResult["results"] as! NSArray
+					let objectsArray = parsedResult["results"] as! NSArray
 					// instantiate a new array that will contain all the parsed student locations
 					var locationsArray = [StudentLocation]()
 					// iterate over the objects in the dictionary and add each one to the

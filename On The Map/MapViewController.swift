@@ -23,11 +23,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 	// is set up as the map view's delegate.
 	@IBOutlet weak var mapView: MKMapView!
 	
-	// The "studentLocations" array is an array of dictionary objects that are downloaded from Parse
-	var studentLocations: [StudentLocation]?
-	// A reference to the app delegate that allows access to the user that is logged in
-	let appDelegate: AppDelegate! = UIApplication.sharedApplication().delegate as! AppDelegate
-	
 	// Override default functionality to allow this controller to add two buttons to the right bar button in the
 	// navigation bar.
 	override func viewDidLoad() {
@@ -55,7 +50,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 		ParseClient.getStudentLocations() {result, error in
 			if error == nil {
 				// There was no error, so update the list of locations
-				self.studentLocations = result
+				AppConfiguration.sharedConfiguration.studentLocations = result
 				// Dispatch a call to the UI thread to create the new annotations since the data has been updated, then
 				// show a "toast" (sorry for the Android reference) notifying the user that the locations have been udpated
 				dispatch_async(dispatch_get_main_queue(), { () in
@@ -101,7 +96,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 		// point annotations will be stored in this array, and then provided to the map view.
 		var annotations = [MKPointAnnotation]()
 		
-		for dictionary in self.studentLocations! {
+		for dictionary in AppConfiguration.sharedConfiguration.studentLocations! {
 			
 			// Notice that the float values are being used to create CLLocationDegree values.
 			// This is a version of the Double type.
