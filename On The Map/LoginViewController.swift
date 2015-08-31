@@ -22,8 +22,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 	@IBOutlet weak var usernameTextField: UITextField!
 	@IBOutlet weak var passwordTextField: UITextField!
 	
-	// Get a reference to the app delegate to enable access to the user property
-	let appDelegate: AppDelegate! = UIApplication.sharedApplication().delegate as! AppDelegate
 	// the UdacityUser that is represented by the login creds
 	var user = AppConfiguration.sharedConfiguration.user
 	var tapRecognizer: UITapGestureRecognizer? = nil

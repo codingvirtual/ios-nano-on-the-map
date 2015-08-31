@@ -18,13 +18,18 @@ import CoreLocation
 import UIKit
 import MapKit
 
-class GetLinkViewController: UIViewController, MKMapViewDelegate  {
+class GetLinkViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegate  {
 
 	var userLocation: CLLocation?	// the coordinates that resulted from the geocoding. This will be set by the prior controller
 	var mapString: String?			// the location that the user entered into the location field. This text was used to forward-geocode
 	var mediaURL: String?			// This will contain the URL that the user enters on this screen
 	var student: UdacityUser?		// A reference to an UdacityUser, useful for obtaining the name and user ID of the user
 	var previousController: AddLocationViewController?	// A reference to the controller that invoked this controller to make cancelling easier
+	
+	/* Based on student comments, this was added to help with smaller resolution devices */
+	var keyboardAdjusted = false
+	var tapRecognizer: UITapGestureRecognizer? = nil
+	var lastKeyboardOffset : CGFloat = 0.0
 	
 	// An outlet to the field where the user enters the URL they want included in the posting
 	@IBOutlet weak var linkTF: UITextField!
@@ -38,14 +43,25 @@ class GetLinkViewController: UIViewController, MKMapViewDelegate  {
 		locationAnnotation.coordinate = userLocation!.coordinate
 		mapView.addAnnotation(locationAnnotation)
 		mapView.centerCoordinate = userLocation!.coordinate
+		/* Configure tap recognizer */
+		tapRecognizer = UITapGestureRecognizer(target: self, action: "handleSingleTap:")
+		tapRecognizer?.numberOfTapsRequired = 1
+		linkTF.delegate = self
 	}
 	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
-		// get a reference to the app delegate in order to get to the currently logged-in user
-		let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-		// retrieve the user from the delegate
+		self.addKeyboardDismissRecognizer()
+		self.subscribeToKeyboardNotifications()
+		// retrieve the user from the shared configuration
 		student = AppConfiguration.sharedConfiguration.user!
+	}
+	
+	// Override default functionality to disable keyboard-related functionality
+	override func viewWillDisappear(animated: Bool) {
+		super.viewWillDisappear(animated)
+		self.removeKeyboardDismissRecognizer()
+		self.unsubscribeToKeyboardNotifications()
 	}
 	
 	// This function is triggered when the user taps the Cancel button in the upper-right corner.
@@ -106,11 +122,8 @@ class GetLinkViewController: UIViewController, MKMapViewDelegate  {
 	
 	// MapView delegate method that allows an annotation view to be instantiated and displayed
 	func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
-		
 		let reuseId = "pin"
-		
 		var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? MKPinAnnotationView
-		
 		if pinView == nil {
 			pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
 			pinView!.canShowCallout = false
@@ -119,7 +132,6 @@ class GetLinkViewController: UIViewController, MKMapViewDelegate  {
 		else {
 			pinView!.annotation = annotation
 		}
-		
 		return pinView
 	}
 	
@@ -131,5 +143,67 @@ class GetLinkViewController: UIViewController, MKMapViewDelegate  {
 		if control == annotationView.rightCalloutAccessoryView {
 			return
 		}
+	}
+	// MARK: - Keyboard Fixes
+	
+	func addKeyboardDismissRecognizer() {
+		self.view.addGestureRecognizer(tapRecognizer!)
+	}
+	
+	func removeKeyboardDismissRecognizer() {
+		self.view.removeGestureRecognizer(tapRecognizer!)
+	}
+	
+	func handleSingleTap(recognizer: UITapGestureRecognizer) {
+		self.view.endEditing(true)
+	}
+	
+	func textFieldShouldReturn(textField: UITextField) -> Bool {
+		textField.resignFirstResponder()
+		return true;
+	}
+	
+	func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+		textField.resignFirstResponder()
+		return true
+	}
+
+	// sets up this ViewController to be notified when the keyboard shows or hides
+	func subscribeToKeyboardNotifications() {
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+	}
+	
+	// Removes notifications of the keyboard hiding or showing
+	func unsubscribeToKeyboardNotifications() {
+		NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+		NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+	}
+	
+	// Called when the keyboard will show. Causes the view to slide up by an amount equal to the keyboard height
+	func keyboardWillShow(notification: NSNotification) {
+		
+		if keyboardAdjusted == false {
+			// Save the current offset
+			lastKeyboardOffset = getKeyboardHeight(notification) / 2
+			self.view.superview?.frame.origin.y -= lastKeyboardOffset
+			keyboardAdjusted = true
+		}
+	}
+	
+	// Called when the keyboard is going to hide. Causes the view to go back to the way it was before the keyboard appeared
+	func keyboardWillHide(notification: NSNotification) {
+		
+		if keyboardAdjusted == true {
+			self.view.superview?.frame.origin.y += lastKeyboardOffset
+			keyboardAdjusted = false
+		}
+	}
+	
+	// Calculates and returns the height of the keyboard which is used as an offset to adjust the y-value of the view.
+	func getKeyboardHeight(notification: NSNotification) -> CGFloat {
+		let userInfo = notification.userInfo
+		let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+		return keyboardSize.CGRectValue().height
 	}
 }

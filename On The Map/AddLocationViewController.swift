@@ -18,9 +18,16 @@ import CoreLocation
 
 class AddLocationViewController: UIViewController, UITextFieldDelegate {
 	
+	
 	var location: CLLocation?
 	// A reference to the 2nd of the two views that are needed to gather data for the user's post
 	var linkController: GetLinkViewController?
+	
+	
+	/* Based on student comments, this was added to help with smaller resolution devices */
+	var keyboardAdjusted = false
+	var tapRecognizer: UITapGestureRecognizer? = nil
+	var lastKeyboardOffset : CGFloat = 0.0
 	
 	// An outlet for the activity indicator (spinning thing)
 	@IBOutlet weak var activityView: UIActivityIndicatorView!
@@ -38,6 +45,9 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
 		locationTV.delegate = self
 		findLocation.enabled = false;
 		findLocation.setTitle("Enter Location", forState: UIControlState.Disabled)
+		/* Configure tap recognizer */
+		tapRecognizer = UITapGestureRecognizer(target: self, action: "handleSingleTap:")
+		tapRecognizer?.numberOfTapsRequired = 1
 	}
 	
 	// Override the default functionality to allow us to be notified of text field notifications which is
@@ -45,12 +55,16 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		self.subscribeToTextChangeNotifications()
+		self.addKeyboardDismissRecognizer()
+		self.subscribeToKeyboardNotifications()
 	}
 	
 	// Override required to resign notifications related to the text field
 	override func viewWillDisappear(animated: Bool) {
 		super.viewWillDisappear(animated)
 		self.unsubscribeToTextChangeNotifications()
+		self.removeKeyboardDismissRecognizer()
+		self.unsubscribeToKeyboardNotifications()
 	}
 	
 	// Helper function that sets up notifications when the location text field changes. In this case, we will call the
@@ -74,12 +88,6 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
 	// Function that is triggered when the user taps the "Find on the Map" button at the bottom of the screen.
 	@IBAction func findLocation(sender: AnyObject) {
 		getLocation()
-	}
-	
-	// TextField delegate function that allows us to resign first responder status when editing of the field is done.
-	func textFieldShouldReturn(textField: UITextField) -> Bool {
-		textField.resignFirstResponder()
-		return true;
 	}
 	
 	// Helper function that sets the state of the Find on the Map button. If the user has entered ANY text into the
@@ -143,5 +151,69 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
 	func showLinkController() {
 		self.performSegueWithIdentifier("GetLink", sender: self)
 	}
+	
+	// MARK: - Keyboard Fixes
+	
+	func addKeyboardDismissRecognizer() {
+		self.view.addGestureRecognizer(tapRecognizer!)
+	}
+	
+	func removeKeyboardDismissRecognizer() {
+		self.view.removeGestureRecognizer(tapRecognizer!)
+	}
+	
+	func handleSingleTap(recognizer: UITapGestureRecognizer) {
+		self.view.endEditing(true)
+	}
+	
+	func textFieldShouldReturn(textField: UITextField) -> Bool {
+		textField.resignFirstResponder()
+		return true;
+	}
+	
+	func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+		textField.resignFirstResponder()
+		return true
+	}
+	
+	// sets up this ViewController to be notified when the keyboard shows or hides
+	func subscribeToKeyboardNotifications() {
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+	}
+	
+	// Removes notifications of the keyboard hiding or showing
+	func unsubscribeToKeyboardNotifications() {
+		NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+		NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+	}
+	
+	// Called when the keyboard will show. Causes the view to slide up by an amount equal to the keyboard height
+	func keyboardWillShow(notification: NSNotification) {
+		
+		if keyboardAdjusted == false {
+			// Save the current offset
+			lastKeyboardOffset = getKeyboardHeight(notification) / 2
+			self.view.superview?.frame.origin.y -= lastKeyboardOffset
+			keyboardAdjusted = true
+		}
+	}
+	
+	// Called when the keyboard is going to hide. Causes the view to go back to the way it was before the keyboard appeared
+	func keyboardWillHide(notification: NSNotification) {
+		
+		if keyboardAdjusted == true {
+			self.view.superview?.frame.origin.y += lastKeyboardOffset
+			keyboardAdjusted = false
+		}
+	}
+	
+	// Calculates and returns the height of the keyboard which is used as an offset to adjust the y-value of the view.
+	func getKeyboardHeight(notification: NSNotification) -> CGFloat {
+		let userInfo = notification.userInfo
+		let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+		return keyboardSize.CGRectValue().height
+	}
+
 	
 }
