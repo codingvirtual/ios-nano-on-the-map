@@ -18,7 +18,7 @@ class ParseClient : NSObject {
 	// have been posted.
 	class func getStudentLocations(completionHandler: ((result: [StudentLocation]?, error: NSError?) -> Void)?) {
 		// configure the request
-		let request = NSMutableURLRequest(URL: NSURL(string: "https://api.parse.com/1/classes/StudentLocation?order=-createdAt&limit=100")!)
+		let request = NSMutableURLRequest(URL: NSURL(string: "https://api.parse.com/1/classes/StudentLocation?order=-updateAt&limit=100")!)
 		// set up the parameters
 		request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
 		request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
@@ -87,10 +87,11 @@ class ParseClient : NSObject {
 			if error != nil { // An error occurred with the request; pass it back through the
 				// completionHandler
 				if (completionHandler != nil) {completionHandler!(result: nil, error: error)}
-			}
-			// no error - the result should be valid JSON indicating success
-			let parsedResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil) as! NSDictionary
+			} else {
+				// no error - the result should be valid JSON indicating success
+				let parsedResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil) as! NSDictionary
 			if (completionHandler != nil) {completionHandler!(result: parsedResult, error: nil)}
+			}
 		}
 		task.resume()
 	}
