@@ -75,9 +75,7 @@
 		379063621B72F71C00EABF2C /* UdacityUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379063601B72F71C00EABF2C /* UdacityUser.swift */; };
 		37A749D51B73106D00ACE6DA /* Object_Class_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A749D41B73106D00ACE6DA /* Object_Class_Tests.swift */; };
 		37A749D71B73842800ACE6DA /* StudentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A749D61B73842800ACE6DA /* StudentLocation.swift */; };
-		37A749DB1B73889400ACE6DA /* Parse_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A749DA1B73889400ACE6DA /* Parse_Tests.swift */; };
 		37A749DC1B7389F300ACE6DA /* StudentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A749D61B73842800ACE6DA /* StudentLocation.swift */; };
-		37EF16211B713FDD0088F6FC /* On_The_Map_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EF16201B713FDD0088F6FC /* On_The_Map_Tests.swift */; };
 		37EF162F1B7142CC0088F6FC /* UdacityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377F40B71B70D32A000B8A38 /* UdacityConstants.swift */; };
 		37EF16301B7142CC0088F6FC /* UdacityClientOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377F40B91B70D398000B8A38 /* UdacityClientOperations.swift */; };
 		37F1EA981B74D4E4006AF3BF /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F1EA971B74D4E4006AF3BF /* ParseClient.swift */; };
@@ -146,10 +144,8 @@
 		379063601B72F71C00EABF2C /* UdacityUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityUser.swift; sourceTree = "<group>"; };
 		37A749D41B73106D00ACE6DA /* Object_Class_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Object_Class_Tests.swift; sourceTree = "<group>"; };
 		37A749D61B73842800ACE6DA /* StudentLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentLocation.swift; sourceTree = "<group>"; };
-		37A749DA1B73889400ACE6DA /* Parse_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parse_Tests.swift; sourceTree = "<group>"; };
 		37EF161C1B713FDD0088F6FC /* On The Map Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "On The Map Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		37EF161F1B713FDD0088F6FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		37EF16201B713FDD0088F6FC /* On_The_Map_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = On_The_Map_Tests.swift; sourceTree = "<group>"; };
 		37F1EA971B74D4E4006AF3BF /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -364,9 +360,7 @@
 		37EF161D1B713FDD0088F6FC /* On The Map Tests */ = {
 			isa = PBXGroup;
 			children = (
-				37A749DA1B73889400ACE6DA /* Parse_Tests.swift */,
 				37A749D41B73106D00ACE6DA /* Object_Class_Tests.swift */,
-				37EF16201B713FDD0088F6FC /* On_The_Map_Tests.swift */,
 				37EF161E1B713FDD0088F6FC /* Supporting Files */,
 			);
 			path = "On The Map Tests";
@@ -440,6 +434,7 @@
 		374B61191B6EA61D00A40985 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = codingvirtual;
 				TargetAttributes = {
@@ -540,8 +535,6 @@
 				37EF162F1B7142CC0088F6FC /* UdacityConstants.swift in Sources */,
 				379063621B72F71C00EABF2C /* UdacityUser.swift in Sources */,
 				37EF16301B7142CC0088F6FC /* UdacityClientOperations.swift in Sources */,
-				37A749DB1B73889400ACE6DA /* Parse_Tests.swift in Sources */,
-				37EF16211B713FDD0088F6FC /* On_The_Map_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
