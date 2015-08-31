@@ -21,7 +21,7 @@ class LocationTableViewController: UITableViewController, UITableViewDataSource,
 	// The list gets populated via an HTTP call to the Parse API that queries the Udacity database.
 	var studentLocations: [StudentLocation]? = nil
 	// A reference the app delegate which stores the UdacityUser that is logged into the app
-	var appDelegate: AppDelegate! = UIApplication.sharedApplication().delegate as! AppDelegate
+	let appDelegate: AppDelegate! = UIApplication.sharedApplication().delegate as! AppDelegate
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -63,12 +63,15 @@ class LocationTableViewController: UITableViewController, UITableViewDataSource,
 	func doRefresh() {
 		ParseClient.getStudentLocations() {result, error in
 			if error == nil {
+				// The request was successful, so update the list of locations in storage
+				// then display a "toast" (sorry for the Android reference) to notify the user that the update was successful
 				self.studentLocations = result
 				dispatch_async(dispatch_get_main_queue(), { () in
 					self.tableView.reloadData()
 					self.view.makeToast(message: "Locations have been updated", duration: HRToastDefaultDuration, position: HRToastPositionCenter)
 				})
 			} else {
+				// There was an error with the request. Determine what type of error and display and appropriate message to the user.
 				if error?.domain == NSURLErrorDomain {
 					self.showAlert("Network Error", message: "A network error has occurred: \(error!.localizedFailureReason)")
 				} else {

@@ -22,9 +22,10 @@ class LoginViewController: UIViewController {
 	@IBOutlet weak var usernameTextField: UITextField!
 	@IBOutlet weak var passwordTextField: UITextField!
 	
-	var completionHandler : ((success: Bool, errorString: String?) -> Void)? = nil
-	var appDelegate: AppDelegate!
-	var user: UdacityUser?			// the UdacityUser that is represented by the login creds
+	// Get a reference to the app delegate to enable access to the user property
+	let appDelegate: AppDelegate! = UIApplication.sharedApplication().delegate as! AppDelegate
+	// the UdacityUser that is represented by the login creds
+	var user: UdacityUser?
 	var tapRecognizer: UITapGestureRecognizer? = nil
 	
 	/* Based on student comments, this was added to help with smaller resolution devices */
@@ -35,9 +36,6 @@ class LoginViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// get a reference to the app delegate
-		appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-		
 		/* Configure the UI */
 		self.configureUI()
 	}
