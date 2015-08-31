@@ -16,7 +16,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 	
 	// Outlets for the username and password fields on the login screen
 	@IBOutlet weak var usernameTextField: UITextField!
@@ -58,6 +58,7 @@ class LoginViewController: UIViewController {
 	// This function does some basic input validation and then attempts
 	// to log the user in using the provided credentials.
 	@IBAction func doLogin() {
+		self.resignFirstResponder()
 		var debugMessage = String("")	// will contain all debug messages after all validation
 		
 		// First, validate that a proper username was entered. In this case, proper equates
@@ -148,6 +149,15 @@ class LoginViewController: UIViewController {
 		self.view.endEditing(true)
 	}
 	
+	func textFieldShouldReturn(textField: UITextField) -> Bool {
+		textField.resignFirstResponder()
+		return true;
+	}
+	
+	func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+		textField.resignFirstResponder()
+		return true
+	}
 }
 
 // MARK: - Helper
