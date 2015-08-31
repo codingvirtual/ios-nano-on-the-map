@@ -71,7 +71,7 @@ class UdacityClientOperations: NSObject {
 						// all that we have is the user's unique userID. In the next step,
 						// a request will be initiated to go and retrieve the account data
 						// associated with the user which will give us the first and last name.
-						appDelegate.user = UdacityUser(userId: (userDict[JSONResponseKeys.UserID] as? String)!.toInt()!)
+						AppConfiguration.sharedConfiguration.user = UdacityUser(userId: (userDict[JSONResponseKeys.UserID] as? String)!.toInt()!)
 					}
 					// now set up the next request to go fetch the account data which contains
 					// the user's first and last name. If a completionHandler was provided in
@@ -79,9 +79,9 @@ class UdacityClientOperations: NSObject {
 					// called upon ultimate completion, otherwise just go get the user data
 					// if no completionHandler was provided.
 					if (completionHandler != nil) {
-						UdacityClientOperations.getUserData(appDelegate.user, completionHandler: completionHandler)
+						UdacityClientOperations.getUserData(AppConfiguration.sharedConfiguration.user, completionHandler: completionHandler)
 					} else {
-						UdacityClientOperations.getUserData(appDelegate.user!, completionHandler: nil)
+						UdacityClientOperations.getUserData(AppConfiguration.sharedConfiguration.user!, completionHandler: nil)
 					}
 				} else { // error parsing data into JSON. If a completionHandler was passed in,
 					// invoke it and return the error.
@@ -106,7 +106,7 @@ class UdacityClientOperations: NSObject {
 		configure(Constants.BaseURLSecure, baseURLInsecure: Constants.BaseURL)
 		// create a dictionary that contains the userID. This will be used further below
 		// to build a JSON body to send with the request.
-		var parameters = ["id": appDelegate.user!.userId]
+		var parameters = ["id": AppConfiguration.sharedConfiguration.user!.userId]
 		/* 2/3. Build the URL and configure the request */
 		var method = UdacityClientOperations.Methods.GetUserData
 		/* 4. Build the request. NOTE: HTTPS is used in this call */
@@ -116,12 +116,12 @@ class UdacityClientOperations: NSObject {
 					if let userInfo = result.valueForKey("user") as? [String:AnyObject] {
 						// extract the user info from the dictionary and set the appropriate
 						// properties of the appDelegate user.
-						appDelegate.user!.firstName = userInfo[JSONResponseKeys.FirstName] as? String
-						appDelegate.user!.lastName = userInfo[JSONResponseKeys.LastName] as? String
+						AppConfiguration.sharedConfiguration.user!.firstName = userInfo[JSONResponseKeys.FirstName] as? String
+						AppConfiguration.sharedConfiguration.user!.lastName = userInfo[JSONResponseKeys.LastName] as? String
 					}
 					// if a completionHandler was provided in the call to this method, invoke
 					// it and return the user within it
-					if (completionHandler != nil) {completionHandler!(result: appDelegate.user! as? AnyObject, error: nil)}
+					if (completionHandler != nil) {completionHandler!(result: AppConfiguration.sharedConfiguration.user! as? AnyObject, error: nil)}
 				} else {  // parsing JSON failed. Return the error
 					if (completionHandler != nil) {completionHandler!(result: nil, error: error)}
 				}

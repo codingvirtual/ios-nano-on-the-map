@@ -87,7 +87,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 	// Function that is triggered when the user taps the Logout button in the upper-left corner
 	@IBAction func doLogout() {
 		// Reset the user in the delegate to reflect that no user is logged in
-		appDelegate.user = nil
+		AppConfiguration.sharedConfiguration.user = nil
 		// Get a reference to the Login controller and tehn present it
 		let loginController = storyboard!.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
 		modalPresentationStyle = UIModalPresentationStyle.FullScreen

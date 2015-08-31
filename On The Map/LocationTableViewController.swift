@@ -46,7 +46,7 @@ class LocationTableViewController: UITableViewController, UITableViewDataSource,
 	// An action that is triggered when the user clicks the Logout button. It resets the logged-in user (which has the effect of logging them
 	// out in this app) and then returns to the login screen.
 	@IBAction func doLogout() {
-		appDelegate.user = nil	// reset the currently logged-in user
+		AppConfiguration.sharedConfiguration.user = nil	// reset the currently logged-in user
 		// Get a reference to the login controller and then present it so a new login attempt can begin
 		let loginController = storyboard!.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
 		modalPresentationStyle = UIModalPresentationStyle.FullScreen

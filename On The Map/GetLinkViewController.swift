@@ -45,7 +45,7 @@ class GetLinkViewController: UIViewController, MKMapViewDelegate  {
 		// get a reference to the app delegate in order to get to the currently logged-in user
 		let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 		// retrieve the user from the delegate
-		student = appDelegate.user!
+		student = AppConfiguration.sharedConfiguration.user!
 	}
 	
 	// This function is triggered when the user taps the Cancel button in the upper-right corner.

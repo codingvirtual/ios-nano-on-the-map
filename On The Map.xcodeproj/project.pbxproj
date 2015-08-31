@@ -35,6 +35,7 @@
 		374B61701B6EAC4900A40985 /* OnTheMap_80.png in Resources */ = {isa = PBXBuildFile; fileRef = 374B615F1B6EAC4900A40985 /* OnTheMap_80.png */; };
 		374B61711B6EAC4900A40985 /* pin.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 374B61601B6EAC4900A40985 /* pin.pdf */; };
 		374B61721B6EAC4900A40985 /* udacity.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 374B61611B6EAC4900A40985 /* udacity.pdf */; };
+		376A16F01B948DB800516ED9 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376A16EF1B948DB800516ED9 /* AppConfiguration.swift */; };
 		377F40B81B70D32A000B8A38 /* UdacityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377F40B71B70D32A000B8A38 /* UdacityConstants.swift */; };
 		377F40BA1B70D398000B8A38 /* UdacityClientOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377F40B91B70D398000B8A38 /* UdacityClientOperations.swift */; };
 		379063341B72A47F00EABF2C /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3790632E1B72A47F00EABF2C /* Bolts.framework */; };
@@ -89,6 +90,7 @@
 		374B615F1B6EAC4900A40985 /* OnTheMap_80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OnTheMap_80.png; sourceTree = "<group>"; };
 		374B61601B6EAC4900A40985 /* pin.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pin.pdf; sourceTree = "<group>"; };
 		374B61611B6EAC4900A40985 /* udacity.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = udacity.pdf; sourceTree = "<group>"; };
+		376A16EF1B948DB800516ED9 /* AppConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
 		377F40B71B70D32A000B8A38 /* UdacityConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityConstants.swift; sourceTree = "<group>"; };
 		377F40B91B70D398000B8A38 /* UdacityClientOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityClientOperations.swift; sourceTree = "<group>"; };
 		3790632E1B72A47F00EABF2C /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				374B61261B6EA61D00A40985 /* AppDelegate.swift */,
+				376A16EF1B948DB800516ED9 /* AppConfiguration.swift */,
 				374B61481B6EA8F900A40985 /* Controllers */,
 				374B61471B6EA8F200A40985 /* Views */,
 				374B61461B6EA8EA00A40985 /* Models */,
@@ -413,6 +416,7 @@
 				3738B9361B852A500046E47D /* GetLinkViewController.swift in Sources */,
 				371EBBD81B8976000002D58A /* HRToast+UIView.swift in Sources */,
 				371799041B83A13C00849151 /* MapViewController.swift in Sources */,
+				376A16F01B948DB800516ED9 /* AppConfiguration.swift in Sources */,
 				371799001B81723200849151 /* LocationTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
