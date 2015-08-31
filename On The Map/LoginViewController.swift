@@ -42,15 +42,14 @@ class LoginViewController: UIViewController {
 		self.configureUI()
 	}
 	
+	// Override default functionality to enable keyboard-related functionality
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		self.addKeyboardDismissRecognizer()
 		self.subscribeToKeyboardNotifications()
 	}
-	
-	override func viewDidAppear(animated: Bool) {
-		super.viewDidAppear(animated)
-	}
+
+	// Override default functionality to disable keyboard-related functionality
 	override func viewWillDisappear(animated: Bool) {
 		super.viewWillDisappear(animated)
 		self.removeKeyboardDismissRecognizer()

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		371798FE1B815D9E00849151 /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F1EA971B74D4E4006AF3BF /* ParseClient.swift */; };
 		371799001B81723200849151 /* LocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371798FF1B81723200849151 /* LocationTableViewController.swift */; };
-		371799021B8175D300849151 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371799011B8175D300849151 /* LocationTableViewCell.swift */; };
 		371799041B83A13C00849151 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371799031B83A13C00849151 /* MapViewController.swift */; };
 		371EBBD81B8976000002D58A /* HRToast+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371EBBD71B8976000002D58A /* HRToast+UIView.swift */; };
 		371EBBDA1B8D3B8B0002D58A /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371EBBD91B8D3B8B0002D58A /* UIViewControllerExtension.swift */; };
@@ -96,7 +95,6 @@
 
 /* Begin PBXFileReference section */
 		371798FF1B81723200849151 /* LocationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTableViewController.swift; sourceTree = "<group>"; };
-		371799011B8175D300849151 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
 		371799031B83A13C00849151 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = MapViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		371EBBD71B8976000002D58A /* HRToast+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HRToast+UIView.swift"; sourceTree = "<group>"; };
 		371EBBD91B8D3B8B0002D58A /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -280,7 +278,6 @@
 			children = (
 				374B61281B6EA61D00A40985 /* LoginViewController.swift */,
 				371798FF1B81723200849151 /* LocationTableViewController.swift */,
-				371799011B8175D300849151 /* LocationTableViewCell.swift */,
 				371799031B83A13C00849151 /* MapViewController.swift */,
 				3738B9321B83D9D70046E47D /* AddLocationViewController.swift */,
 				3738B9351B852A500046E47D /* GetLinkViewController.swift */,
@@ -528,7 +525,6 @@
 				3738B9361B852A500046E47D /* GetLinkViewController.swift in Sources */,
 				371EBBD81B8976000002D58A /* HRToast+UIView.swift in Sources */,
 				371799041B83A13C00849151 /* MapViewController.swift in Sources */,
-				371799021B8175D300849151 /* LocationTableViewCell.swift in Sources */,
 				371799001B81723200849151 /* LocationTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

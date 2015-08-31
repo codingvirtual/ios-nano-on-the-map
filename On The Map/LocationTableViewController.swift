@@ -100,10 +100,10 @@ class LocationTableViewController: UITableViewController, UITableViewDataSource,
 	
 	// Required override of the DataSource delegate protocol that returns a specific cell of data from the datasource
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCellWithIdentifier("LocationTableViewCell") as! LocationTableViewCell
+		let cell = tableView.dequeueReusableCellWithIdentifier("LocationTableViewCell") as! UITableViewCell
 		let location = studentLocations![indexPath.row]
 		// Set the first and last name of the student as the cell text
-		cell.studentName!.text = location.firstName! + " " + location.lastName!
+		cell.textLabel!.text = location.firstName! + " " + location.lastName!
 		
 		return cell
 	}
