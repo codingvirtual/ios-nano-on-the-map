@@ -6,6 +6,10 @@
 //  Copyright (c) 2015 codingvirtual. All rights reserved.
 //
 
+
+//  Note that UIViewController is extended by UIViewControllerExtension.swift which contains
+//  the code to raise an AlertView by any of the view controllers in this application.
+
 import Foundation
 import MapKit
 
